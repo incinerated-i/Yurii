@@ -1,18 +1,23 @@
-/* Style the cake GIF */
+/* Style the cake GIF container */
 #cakeContainer {
     text-align: center;
-    margin-top: 50px;
+    margin-top: 100 px; /* Push the cake down a bit from the top */
 }
 
+/* Make the cake bigger and center it */
 #cakeGif {
-    width: 300px; /* Adjust the size of the cake GIF */
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease-in-out;
+    width: 500 px; /* Increase the width to make the cake bigger */
+    height: auto; /* Maintain the aspect ratio */
+    border-radius: 10 px;
+    box-shadow: 0 0 15 px rgba (0, 0, 0, 0.3);
+    transition: transform 0.3 s ease-in-out;
+    margin: 0 auto; /* Center the cake horizontally */
+    display: block; /* Make sure it's a block element to center it */
 }
 
+/* Hover effect */
 #cakeGif:hover {
-    transform: scale(1.1); /* Slight zoom-in effect when hovering over the cake */
+    transform: scale (1.1); /* Slight zoom-in effect when hovering over the cake */
 }
 
 /* Style the popup window */
@@ -22,7 +27,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.6); /* Overlay effect */
+    background-color: rgba (0, 0, 0, 0.6); /* Overlay effect */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,42 +35,27 @@
 
 #popupContent {
     background-color: #fff;
-    padding: 30px;
-    border-radius: 10px;
+    padding: 30 px;
+    border-radius: 10 px;
     text-align: center;
-    width: 80%;
-    max-width: 500px;
+    width: 80 %;
+    max-width: 500 px;
 }
 
 #popupContent h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
+    font-size: 24 px;
+    margin-bottom: 20 px;
 }
 
-#popupContent button {
-    background-color: #ff6347;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-#popupContent button:hover {
-    background-color: #ff4500;
 }
 /* Style for buttons inside the popup */
 #popupContent button {
     background-color: #ff6347;
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
+    padding: 10 px 20 px;
+    border-radius: 8 px;
     cursor: pointer;
-    margin-top: 15px;
-    transition: background-color 0.3s ease;
-}
-
-#popupContent button:hover {
-    background-color: #ff4500;
+    margin-top: 15 px;
+    transition: background-color 0.3 s ease;
 }
