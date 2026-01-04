@@ -27,11 +27,11 @@ p {
 
 /* Cake GIF */
 #cakeGif {
-    width: 500 px; /* Bigger cake */
+    width: 1500 px; /* Bigger cake */
     height: auto;
     border-radius: 10 px;
     box-shadow: 0 0 15 px rgba (0, 0, 0, 0.3);
-    transition: transform 0.3 s ease-in-out;
+    transition: transform 2.3 s ease-in-out;
     margin: 0 auto;
     display: block;
 }
@@ -67,7 +67,7 @@ p {
 
 /* Popup Buttons */
 #popupContent button {
-    background-color: #ff6347;
+    background-color: #ff0000;
     color: white;
     border: none;
     padding: 10 px 20 px;
@@ -78,5 +78,5 @@ p {
 }
 
 #popupContent button:hover {
-    background-color: #ff4500;
+    background-color: #6b0909;
 }
