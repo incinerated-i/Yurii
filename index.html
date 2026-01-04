@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>A Gift for You ❤️</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+    <h1>Happy Birthday, My Love 🎂</h1>
+    <p>I made this just for you.</p>
+
+    <button onclick="playSong()">Press Me 💖</button>
+
+    <audio id="song">
+        <source src="birthday.mp3" type="audio/mpeg">
+        Your browser does not support audio.
+    </audio>
+
+    <script>
+        function playSong() {
+            document.getElementById("song").play();
+        }
+    </script>
+
+</body>
+</html>
