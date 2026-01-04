@@ -1,65 +1,71 @@
-/* Add background image to the entire page */
+/* Background Image */
 body {
     background-image: url('https://i.pinimg.com/1200x/95/0e/37/950e37283e193f90d8531c8a4cf79dcc.jpg');
-    background-size: cover; /* Makes sure the image covers the entire screen */
-    background-position: center center; /* Centers the image */
-    background-attachment: fixed; /* Keeps the background fixed while scrolling */
-    color: white; /* Adjust text color to be readable on the image */
-}
-
-/* Style the cake GIF container */
-#cakeContainer {
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    color: white;/* Makes text visible on background */
+    font-family: Arial, sans-serif;
     text-align: center;
-    margin-top: 500 px; 
-    /* Push the cake down a bit from the top */
+    margin: 0;
+    padding: 0;
 }
 
-/* Make the cake bigger and center it */
+/* Page Heading and Paragraph */
+h1 {
+    margin-top: 50 px;
+}
+
+p {
+    font-size: 1.2 rem;
+}
+
+/* Cake Container */
+#cakeContainer {
+    margin-top: 100 px;
+}
+
+/* Cake GIF */
 #cakeGif {
-    width: 500 px; /* Increase the width to make the cake bigger */
-    height: auto; /* Maintain the aspect ratio */
+    width: 500 px; /* Bigger cake */
+    height: auto;
     border-radius: 10 px;
     box-shadow: 0 0 15 px rgba (0, 0, 0, 0.3);
     transition: transform 0.3 s ease-in-out;
-    margin: 0 auto; /* Center the cake horizontally */
-    display: block; /* Make sure it's a block element to center it */
+    margin: 0 auto;
+    display: block;
 }
 
-/* Hover effect */
 #cakeGif:hover {
-    transform: scale (1.1); /* Slight zoom-in effect when hovering over the cake */
+    transform: scale (1.1);
 }
 
-/* Style the popup window */
+/* Popup Window */
 #popupWindow {
     position: fixed;
-    top: 55;
-    left: 61;
-    right: 61;
-    bottom: 55;
-    background-color: rgba (0, 0, 0, 0.6); 
-    /* Overlay effect */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba (0, 0, 0, 0.6);
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1000;
 }
 
+/* Popup Content Box */
 #popupContent {
-    background-color: #0a0a0a ;
+    background-color: #fff;
+    color: #000;
     padding: 30 px;
     border-radius: 10 px;
-    text-align: center;
     width: 80 %;
     max-width: 500 px;
+    text-align: center;
 }
 
-#popupContent h2 {
-    font-size: 24 px;
-    margin-bottom: 20 px;
-}
-
-}
-/* Style for buttons inside the popup */
+/* Popup Buttons */
 #popupContent button {
     background-color: #ff6347;
     color: white;
@@ -67,6 +73,10 @@ body {
     padding: 10 px 20 px;
     border-radius: 8 px;
     cursor: pointer;
-    margin-top: 15 px;
+    margin: 15 px 10 px 0 10 px;
     transition: background-color 0.3 s ease;
+}
+
+#popupContent button:hover {
+    background-color: #ff4500;
 }
