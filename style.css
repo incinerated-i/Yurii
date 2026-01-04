@@ -22,7 +22,7 @@ p {
 
 /* Cake Container */
 #cakeContainer {
-    margin-top: 100 px;
+    margin-top: 1000 px;
 }
 
 /* Cake GIF */
@@ -37,7 +37,7 @@ p {
 }
 
 #cakeGif:hover {
-    transform: scale (1.1);
+    transform: scale (2.1);
 }
 
 /* Popup Window */
