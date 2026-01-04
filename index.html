@@ -5,7 +5,21 @@
     <title>A Gift for You ❤️</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>
+<<div id="cakeContainer">
+    <img src="https://i.pinimg.com/originals/c2/ec/cf/c2eccf4f82fd5e31e1c7d8ee3c9e8e7d.gif" alt="Birthday Cake" id="cakeGif" style="cursor: pointer;">
+</div>
+    <!-- Hidden popup window -->
+<div id="popupWindow" style="display: none;">
+    <div id="popupContent">
+        <h2>Here's my voice note for you!</h2>
+        <audio controls>
+            <source src="voice_note.mp3" type="audio/mpeg">
+            Your browser does not support audio playback.
+        </audio>
+        <button onclick="closePopup()">Close</button>
+    </div>
+</div>
+>
 
     <h1>Happy Birthday, My Love 🎂</h1>
     <p>I made this just for you.</p>
