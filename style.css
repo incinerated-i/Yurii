@@ -1,7 +1,17 @@
+/* Add background image to the entire page */
+body {
+    background-image: url('https://i.pinimg.com/1200x/95/0e/37/950e37283e193f90d8531c8a4cf79dcc.jpg');
+    background-size: cover; /* Makes sure the image covers the entire screen */
+    background-position: center center; /* Centers the image */
+    background-attachment: fixed; /* Keeps the background fixed while scrolling */
+    color: white; /* Adjust text color to be readable on the image */
+}
+
 /* Style the cake GIF container */
 #cakeContainer {
     text-align: center;
-    margin-top: 100 px; /* Push the cake down a bit from the top */
+    margin-top: 500 px; 
+    /* Push the cake down a bit from the top */
 }
 
 /* Make the cake bigger and center it */
@@ -23,18 +33,19 @@
 /* Style the popup window */
 #popupWindow {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba (0, 0, 0, 0.6); /* Overlay effect */
+    top: 55;
+    left: 61;
+    right: 61;
+    bottom: 55;
+    background-color: rgba (0, 0, 0, 0.6); 
+    /* Overlay effect */
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 #popupContent {
-    background-color: #fff;
+    background-color: #0a0a0a ;
     padding: 30 px;
     border-radius: 10 px;
     text-align: center;
