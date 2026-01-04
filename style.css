@@ -1,0 +1,71 @@
+/* Style the cake GIF */
+#cakeContainer {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#cakeGif {
+    width: 300px; /* Adjust the size of the cake GIF */
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out;
+}
+
+#cakeGif:hover {
+    transform: scale(1.1); /* Slight zoom-in effect when hovering over the cake */
+}
+
+/* Style the popup window */
+#popupWindow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6); /* Overlay effect */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#popupContent {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    width: 80%;
+    max-width: 500px;
+}
+
+#popupContent h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#popupContent button {
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#popupContent button:hover {
+    background-color: #ff4500;
+}
+/* Style for buttons inside the popup */
+#popupContent button {
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+#popupContent button:hover {
+    background-color: #ff4500;
+}
