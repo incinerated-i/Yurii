@@ -1,33 +1,68 @@
 body {
-    background-image: url('https://i.pinimg.com/1200x/95/0e/37/950e37283e193f90d8531c8a4cf79dcc.jpg');
+    background-image: url("https://i.pinimg.com/1200x/95/0e/37/950e37283e193f90d8531c8a4cf79dcc.jpg");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+
     color: white;
-    text-align: center;
     font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    margin-top: 40 px;
+}
+
+p {
+    font-size: 1.2 rem;
 }
 
 #countdown {
-    font-size: 1.5rem;
-    margin-top: 20px;
+    font-size: 1.5 rem;
+    margin: 20 px 0;
+}
+
+/* Music button */
+#musicBtn {
+    padding: 10 px 20 px;
+    border-radius: 8 px;
+    border: none;
+    background: #ff4d4d;
+    color: white;
+    cursor: pointer;
+}
+
+/* Cake */
+#cakeContainer {
+    margin-top: 30 px;
 }
 
 #cakeGif {
-    width: 300px;
+    width: 280 px;
     cursor: pointer;
-    transition: transform 0.5s ease;
+    transition: transform 0.4 s ease;
 }
 
 #cakeGif:hover {
-    transform: scale(1.1);
+    transform: scale (1.1);
 }
 
+/* Slideshow */
+#slideshow img {
+    width: 300 px;
+    border-radius: 12 px;
+    margin-top: 30 px;
+    box-shadow: 0 0 15 px rgba (0,0,0,0.5);
+}
+
+/* Popup */
 #popupWindow {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.6);
+    background: rgba (0,0,0,0.6);
     justify-content: center;
     align-items: center;
 }
@@ -35,18 +70,29 @@ body {
 #popupContent {
     background: white;
     color: black;
-    padding: 30px;
-    border-radius: 12px;
-    max-width: 400px;
+    padding: 30 px;
+    border-radius: 12 px;
+    width: 90 %;
+    max-width: 420 px;
 }
 
-button {
-    padding: 10px 20px;
-    margin: 10px;
-    border-radius: 8px;
+#popupContent button {
+    margin: 10 px;
+    padding: 10 px 20 px;
+    border-radius: 8 px;
     border: none;
-    cursor: pointer;
     background: #ff4d4d;
     color: white;
+    cursor: pointer;
 }
+
+#typewriter {
+    margin-top: 15 px;
+    font-style: italic;
+}
+
+#lockedMessage {
+    display: none;
+    margin-top: 20 px;
+    font-weight: bold;
 }
