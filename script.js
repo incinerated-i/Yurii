@@ -1,5 +1,3 @@
-/* ---------------- ELEMENTS ---------------- */
-
 const cakeGif = document.getElementById("cakeGif");
 const popupWindow = document.getElementById("popupWindow");
 
@@ -15,7 +13,11 @@ const countdownEl = document.getElementById("countdown");
 const typewriterEl = document.getElementById("typewriter");
 const lockedMessage = document.getElementById("lockedMessage");
 
-/* ---------------- COUNTDOWN + CONFETTI ---------------- */
+const slide = document.getElementById("slide");
+
+/* =====================================================
+   COUNTDOWN + CONFETTI
+===================================================== */
 
 const birthday = new Date("January 8, 2026 00:00:00").getTime();
 
@@ -34,12 +36,19 @@ const countdownTimer = setInterval(() => {
     countdownEl.textContent = `⏳ ${days} days left`;
 }, 1000);
 
-
-/* ---------------- BACKGROUND MUSIC ---------------- */
+/* =====================================================
+   BACKGROUND MUSIC (SAFE TOGGLE)
+===================================================== */
 
 musicBtn.addEventListener("click", () => {
+    // Pause voice note if playing
+    if (!voiceNote.paused) {
+        voiceNote.pause();
+        playButton.textContent = "Play 💖";
+    }
+
     if (bgMusic.paused) {
-        bgMusic.play();
+        bgMusic.play().catch(() => {});
         musicBtn.textContent = "⏸ Pause Music";
     } else {
         bgMusic.pause();
@@ -47,18 +56,28 @@ musicBtn.addEventListener("click", () => {
     }
 });
 
-/* ---------------- CAKE POPUP ---------------- */
+/* =====================================================
+   CAKE POPUP
+===================================================== */
 
 cakeGif.addEventListener("click", () => {
     popupWindow.style.display = "flex";
     startTyping();
 });
 
-/* ---------------- VOICE NOTE ---------------- */
+/* =====================================================
+   VOICE NOTE (NO OVERLAP GUARANTEED)
+===================================================== */
 
 playButton.addEventListener("click", () => {
+    // Pause background music first
+    if (!bgMusic.paused) {
+        bgMusic.pause();
+        musicBtn.textContent = "🎵 Play Music";
+    }
+
     if (voiceNote.paused) {
-        voiceNote.play();
+        voiceNote.play().catch(() => {});
         playButton.textContent = "Pause 💖";
     } else {
         voiceNote.pause();
@@ -66,11 +85,18 @@ playButton.addEventListener("click", () => {
     }
 });
 
+// When voice note ends
 voiceNote.addEventListener("ended", () => {
     lockedMessage.style.display = "block";
+
+    // Resume background music gently
+    bgMusic.play().catch(() => {});
+    musicBtn.textContent = "⏸ Pause Music";
 });
 
-/* ---------------- TYPEWRITER ---------------- */
+/* =====================================================
+   TYPEWRITER LOVE LETTER
+===================================================== */
 
 const letter =
 "Do remember to record yourself crying.\n" +
@@ -94,7 +120,9 @@ function startTyping() {
     }, 45);
 }
 
-/* ---------------- SLIDESHOW (PNG SUPPORT) ---------------- */
+/* =====================================================
+   SLIDESHOW (PNG IMAGES)
+===================================================== */
 
 const photos = [
     "assets/images/photo1.png",
@@ -104,23 +132,26 @@ const photos = [
 ];
 
 let slideIndex = 0;
-const slide = document.getElementById("slide");
 
 setInterval(() => {
     slideIndex = (slideIndex + 1) % photos.length;
     slide.src = photos[slideIndex];
 }, 3000);
 
-
-/* ---------------- SURPRISE BUTTON ---------------- */
+/* =====================================================
+   SURPRISE BUTTON
+===================================================== */
 
 surpriseBtn.addEventListener("click", () => {
     alert("I'm gonna block you now.╰(*´︶`*)╯");
 });
 
-/* ---------------- CLOSE ---------------- */
+/* =====================================================
+   CLOSE POPUP
+===================================================== */
 
 closeBtn.addEventListener("click", () => {
     popupWindow.style.display = "none";
     voiceNote.pause();
+    playButton.textContent = "Play 💖";
 });
