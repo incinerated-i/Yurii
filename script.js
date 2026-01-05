@@ -72,10 +72,10 @@ voiceNote.addEventListener("ended", () => {
 /* ---------------- TYPEWRITER ---------------- */
 
 const letter =
-"Happy Birthday.\n" +
+"Do remember to record yourself crying.\n" +
 "Even with the distance between us,\n" +
-"you are always in my heart.\n" +
-"I’m so proud of you 💙";
+"I'll always haunt you.\n" +
+"I’m so proud of how far we've come.";
 
 let i = 0;
 
@@ -93,7 +93,7 @@ function startTyping() {
 /* ---------------- SURPRISE BUTTON ---------------- */
 
 surpriseBtn.addEventListener("click", () => {
-    alert("You are deeply loved — today and always 💌");
+    alert("I'm gonna block you now.╰(*´︶`*)╯");
 });
 
 /* ---------------- CLOSE ---------------- */
