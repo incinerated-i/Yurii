@@ -7,24 +7,22 @@
 
     <link rel="stylesheet" href="style.css">
 
-     <!-- Confetti CDN -->
+    <!-- Confetti CDN -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
-
 <body>
 
 <h1>Happy Birthday, My Idiotic HomeBoy 🎂</h1>
 
 <p>
 I made this just for you (´｡• ᵕ •｡`) ♡ <br>
-
 <strong>8th January 2026</strong>
 </p>
 
 <!-- Countdown -->
 <div id="countdown">⏳ Loading countdown...</div>
 
-<!-- Background music -->
+<!-- Music -->
 <button id="musicBtn">🎵 Play Music</button>
 <audio id="bgMusic" loop>
     <source src="assets/music/bg-music.mp3" type="audio/mp3">
@@ -32,10 +30,9 @@ I made this just for you (´｡• ᵕ •｡`) ♡ <br>
 
 <!-- Cake -->
 <div id="cakeContainer">
-    <img
-        id="cakeGif"
-        src="https://i.pinimg.com/originals/c2/ec/cf/c2eccf4f82fd5e31e1c7d8ee3c9e8e7d.gif"
-        alt="Birthday Cake">
+    <img id="cakeGif"
+         src="https://i.pinimg.com/originals/c2/ec/cf/c2eccf4f82fd5e31e1c7d8ee3c9e8e7d.gif"
+         alt="Birthday Cake">
 </div>
 
 <!-- Slideshow -->
@@ -52,9 +49,11 @@ I made this just for you (´｡• ᵕ •｡`) ♡ <br>
             <source src="assets/voice/真的没喝多.mp3" type="audio/mp3">
         </audio>
 
-        <button id="playButton">Play 💖</button>
-        <button id="surpriseBtn">Surprise 💌</button>
-        <button id="closeBtn">Close</button>
+        <div class="popup-buttons">
+            <button id="playButton">Play 💖</button>
+            <button id="surpriseBtn">Surprise 💌</button>
+            <button id="closeBtn">Close</button>
+        </div>
 
         <p id="typewriter"></p>
         <p id="lockedMessage">
@@ -66,6 +65,5 @@ I made this just for you (´｡• ᵕ •｡`) ♡ <br>
 
 <script src="assets/effects/confetti.js"></script>
 <script src="script.js"></script>
-
 </body>
 </html>
