@@ -1,43 +1,41 @@
+/* ---------------- BASIC ELEMENTS ---------------- */
+
 const cakeGif = document.getElementById("cakeGif");
 const popupWindow = document.getElementById("popupWindow");
+
 const voiceNote = document.getElementById("voiceNote");
 const playButton = document.getElementById("playButton");
+const closeBtn = document.getElementById("closeBtn");
+const surpriseBtn = document.getElementById("surpriseBtn");
 
 const bgMusic = document.getElementById("bgMusic");
 const musicBtn = document.getElementById("musicBtn");
 
 const countdownEl = document.getElementById("countdown");
-const secretMessage = document.getElementById("secretMessage");
+const typewriterEl = document.getElementById("typewriter");
+const lockedMessage = document.getElementById("lockedMessage");
 
-// 🎂 Cake popup
-cakeGif.addEventListener("click", () => {
-    popupWindow.style.display = "flex";
-});
+/* ---------------- COUNTDOWN + CONFETTI ---------------- */
 
-// 🎧 Voice note
-function playAudio() {
-    if (voiceNote.paused) {
-        voiceNote.play();
-        playButton.textContent = "Pause 💖";
-    } else {
-        voiceNote.pause();
-        playButton.textContent = "Play 💖";
+const birthday = new Date("January 8, 2026 00:00:00").getTime();
+
+const timer = setInterval(() => {
+    const now = new Date().getTime();
+    const diff = birthday - now;
+
+    if (diff <= 0) {
+        countdownEl.textContent = "🎉 IT’S YOUR DAY 🎉";
+        launchConfetti();
+        clearInterval(timer);
+        return;
     }
-}
 
-// ❌ Close popup
-function closePopup() {
-    popupWindow.style.display = "none";
-    voiceNote.pause();
-}
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    countdownEl.textContent = `⏳ ${days} days left`;
+}, 1000);
 
-// 💬 Interactive surprise
-function showMessage() {
-    secretMessage.textContent =
-        "No matter the distance, you’re always with me. I’m so proud of you 💙";
-}
+/* ---------------- BACKGROUND MUSIC ---------------- */
 
-// 🎵 Background music toggle
 musicBtn.addEventListener("click", () => {
     if (bgMusic.paused) {
         bgMusic.play();
@@ -48,19 +46,59 @@ musicBtn.addEventListener("click", () => {
     }
 });
 
-// ⏳ Countdown Timer
-const birthday = new Date("January 8, 2026 00:00:00").getTime();
+/* ---------------- CAKE POPUP ---------------- */
 
-setInterval(() => {
-    const now = new Date().getTime();
-    const diff = birthday - now;
+cakeGif.addEventListener("click", () => {
+    popupWindow.style.display = "flex";
+    startTyping();
+});
 
-    if (diff <= 0) {
-        countdownEl.innerHTML = "🎉 IT’S YOUR DAY 🎉";
-        cakeGif.style.display = "block";
-        return;
+/* ---------------- VOICE NOTE ---------------- */
+
+playButton.addEventListener("click", () => {
+    if (voiceNote.paused) {
+        voiceNote.play();
+        playButton.textContent = "Pause 💖";
+    } else {
+        voiceNote.pause();
+        playButton.textContent = "Play 💖";
     }
+});
 
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    countdownEl.innerHTML = `⏳ ${days} days left until your birthday`;
-}, 1000);
+voiceNote.addEventListener("ended", () => {
+    lockedMessage.style.display = "block";
+});
+
+/* ---------------- TYPEWRITER ---------------- */
+
+const letter =
+"Happy Birthday.\n" +
+"Even with the distance between us,\n" +
+"you are always in my heart.\n" +
+"I’m so proud of you 💙";
+
+let i = 0;
+
+function startTyping() {
+    typewriterEl.textContent = "";
+    i = 0;
+
+    const typing = setInterval(() => {
+        typewriterEl.textContent += letter[i];
+        i++;
+        if (i >= letter.length) clearInterval(typing);
+    }, 45);
+}
+
+/* ---------------- SURPRISE BUTTON ---------------- */
+
+surpriseBtn.addEventListener("click", () => {
+    alert("You are deeply loved — today and always 💌");
+});
+
+/* ---------------- CLOSE ---------------- */
+
+closeBtn.addEventListener("click", () => {
+    popupWindow.style.display = "none";
+    voiceNote.pause();
+});
