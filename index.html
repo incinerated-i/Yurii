@@ -3,34 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday 罗诗冉 ψ( ` ∇ ´ )ψ</title>
+    <title>Happy Birthday 罗诗冉 🎂</title>
+
     <link rel="stylesheet" href="style.css">
+
+    <!-- Confetti library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 
 <body>
 
 <h1>Happy Birthday, My Idiotic HomeBoy 🎂</h1>
-<p>I made this just for you.<br>
-ON THIS DAY — <strong>8th JAN 2026</strong><br>
-I wish you an amazing year of officially being an adult 💖
+
+<p>
+I made this just for you (´｡• ᵕ •｡`) ♡ <br>
+<strong>8th January 2026</strong>
 </p>
 
 <!-- Countdown -->
 <div id="countdown"></div>
 
 <!-- Background music -->
-<audio id="bgMusic" loop>
-    <source src="bg-music.mp3" type="audio/mp3">
-</audio>
-
 <button id="musicBtn">🎵 Play Music</button>
+<audio id="bgMusic" loop>
+    <source src="assets/music/bg-music.mp3" type="audio/mp3">
+</audio>
 
 <!-- Cake -->
 <div id="cakeContainer">
-    <img 
-        src="https://i.pinimg.com/originals/c2/ec/cf/c2eccf4f82fd5e31e1c7d8ee3c9e8e7d.gif" 
-        alt="Birthday Cake" 
-        id="cakeGif">
+    <img
+        id="cakeGif"
+        src="https://i.pinimg.com/originals/c2/ec/cf/c2eccf4f82fd5e31e1c7d8ee3c9e8e7d.gif"
+        alt="Birthday Cake">
+</div>
+
+<!-- Slideshow -->
+<div id="slideshow">
+    <img id="slide" src="assets/images/photo1.jpg">
 </div>
 
 <!-- Popup -->
@@ -38,16 +47,22 @@ I wish you an amazing year of officially being an adult 💖
     <div id="popupContent">
         <h2>♡ My blessings for you ♡</h2>
 
-        <audio id="voiceNote" src="真的没喝多.mp3"></audio>
+        <audio id="voiceNote" src="assets/voice/真的没喝多.mp3"></audio>
 
-        <button id="playButton" onclick="playAudio()">Play 💖</button>
-        <button onclick="showMessage()">Surprise 💌</button>
-        <button onclick="closePopup()">Close</button>
+        <button id="playButton">Play 💖</button>
+        <button id="surpriseBtn">Surprise 💌</button>
+        <button id="closeBtn">Close</button>
 
-        <p id="secretMessage"></p>
+        <p id="typewriter"></p>
+        <p id="lockedMessage">
+            🌙 You'll always be my bestfriend, even if the future is uncertain.  
+            I treasure you more than words can say. And I want to make this worth it for you, Chinese boi. Even if it might be nothing, I hope it remains as a piece of memory that you can reminisce about.
+        </p>
     </div>
 </div>
 
+<script src="assets/effects/confetti.js"></script>
 <script src="script.js"></script>
+
 </body>
 </html>
