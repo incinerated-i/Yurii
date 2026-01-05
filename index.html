@@ -3,37 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Happy Birthday 罗诗冉	ψ( ` ∇ ´ )ψ </title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Happy Birthday 罗诗冉 ψ( ` ∇ ´ )ψ</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>   
-    <h1>Happy Birthday, My Idiotic HomeBoy 🎂</h1>
-    <p>I made this just for you.
-        ON THIS DAY - 8th JAN 2026
-        罗诗冉	ψ( ` ∇ ´ )ψ
-        I wish you great year of officially being an adult! Congrats!
-    </p>
-    
- <!-- Cake GIF as a clickable button -->
-    <div id="cakeContainer">
-        <img 
-            src="https://i.pinimg.com/originals/c2/ec/cf/c2eccf4f82fd5e31e1c7d8ee3c9e8e7d.gif" 
-            alt="Birthday Cake" 
-            id="cakeGif" 
-            style="cursor: pointer;"
-        />
-    </div>
-<!-- Hidden popup window -->
-<div id="popupWindow" style="display: none;">
+
+<body>
+
+<h1>Happy Birthday, My Idiotic HomeBoy 🎂</h1>
+<p>I made this just for you.<br>
+ON THIS DAY — <strong>8th JAN 2026</strong><br>
+I wish you an amazing year of officially being an adult 💖
+</p>
+
+<!-- Countdown -->
+<div id="countdown"></div>
+
+<!-- Background music -->
+<audio id="bgMusic" loop>
+    <source src="bg-music.mp3" type="audio/mp3">
+</audio>
+
+<button id="musicBtn">🎵 Play Music</button>
+
+<!-- Cake -->
+<div id="cakeContainer">
+    <img 
+        src="https://i.pinimg.com/originals/c2/ec/cf/c2eccf4f82fd5e31e1c7d8ee3c9e8e7d.gif" 
+        alt="Birthday Cake" 
+        id="cakeGif">
+</div>
+
+<!-- Popup -->
+<div id="popupWindow">
     <div id="popupContent">
-        <h2>！♡ !Here's my blessings for you ！♡ !</h2>
-        <!-- Audio section with custom play button -->
-        <audio src="真的没喝多.mp3" id="voiceNote" ></audio>
-        <button onclick="playAudio()">Play 💖</button>
-        <button onclick="closePopup()">Close Tab</button>
+        <h2>♡ My blessings for you ♡</h2>
+
+        <audio id="voiceNote" src="真的没喝多.mp3"></audio>
+
+        <button id="playButton" onclick="playAudio()">Play 💖</button>
+        <button onclick="showMessage()">Surprise 💌</button>
+        <button onclick="closePopup()">Close</button>
+
+        <p id="secretMessage"></p>
     </div>
 </div>
 
- <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
