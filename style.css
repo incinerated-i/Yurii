@@ -1,82 +1,52 @@
-/* Background Image */
 body {
     background-image: url('https://i.pinimg.com/1200x/95/0e/37/950e37283e193f90d8531c8a4cf79dcc.jpg');
     background-size: cover;
-    background-position: center center;
+    background-position: center;
     background-attachment: fixed;
-    color: white;/* Makes text visible on background */
-    font-family: Arial, sans-serif;
+    color: white;
     text-align: center;
-    margin: 0;
-    padding: 0;
+    font-family: Arial, sans-serif;
 }
 
-/* Page Heading and Paragraph */
-h1 {
-    margin-top: 50 px;
+#countdown {
+    font-size: 1.5rem;
+    margin-top: 20px;
 }
 
-p {
-    font-size: 1.2 rem;
-}
-
-/* Cake Container */
-#cakeContainer {
-    margin-top: 1000 px;
-}
-
-/* Cake GIF */
 #cakeGif {
-    width: 1500 px; /* Bigger cake */
-    height: auto;
-    border-radius: 10 px;
-    box-shadow: 0 0 15 px rgba (0, 0, 0, 0.3);
-    transition: transform 2.3 s ease-in-out;
-    margin: 0 auto;
-    display: block;
+    width: 300px;
+    cursor: pointer;
+    transition: transform 0.5s ease;
 }
 
 #cakeGif:hover {
-    transform: scale (2.1);
+    transform: scale(1.1);
 }
 
-/* Popup Window */
 #popupWindow {
+    display: none;
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba (0, 0, 0, 0.6);
-    display: flex;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
     justify-content: center;
     align-items: center;
-    z-index: 1000;
 }
 
-/* Popup Content Box */
 #popupContent {
-    background-color: #fff;
-    color: #000;
-    padding: 30 px;
-    border-radius: 10 px;
-    width: 80 %;
-    max-width: 500 px;
-    text-align: center;
+    background: white;
+    color: black;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 400px;
 }
 
-/* Popup Buttons */
-#popupContent button {
-    background-color: #ff0000;
-    color: white;
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 8px;
     border: none;
-    padding: 10 px 20 px;
-    border-radius: 8 px;
     cursor: pointer;
-    margin: 15 px 10 px 0 10 px;
-    transition: background-color 0.3 s ease;
+    background: #ff4d4d;
+    color: white;
 }
-
-#popupContent button:hover {
-    background-color: #6b0909;
 }
