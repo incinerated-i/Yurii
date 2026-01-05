@@ -38,29 +38,32 @@ p {
 }
 
 /* -------------------- CAKE -------------------- */
-#cakeContainer {
-    margin-top: 30 px;
-}
-
 #cakeGif {
-    width: 280 px;
+    width: 500 px; /* bigger cake */
     cursor: pointer;
     transition: transform 0.4 s ease;
+    margin: 0 auto; /* center horizontally */
 }
 
 #cakeGif:hover {
-    transform: scale (1.1);
+    transform: scale (1.15); /* slightly bigger on hover */
 }
 
 /* -------------------- SLIDESHOW -------------------- */
+#slideshow {
+    display: flex;
+    justify-content: center;
+}
+
 #slideshow img {
-    width: 300 px;
+    width: 220 px;       /* smaller images */
     border-radius: 12 px;
-    margin-top: 30 px;
-    box-shadow: 0 0 15 px rgba (0,0,0,0.5);
+    margin-top: 15 px;   /* reduce space below */
+    box-shadow: 0 0 10 px rgba (0,0,0,0.5);
     transition: opacity 1 s ease-in-out;
     opacity: 1;
 }
+
 
 /* -------------------- POPUP -------------------- */
 #popupWindow {
@@ -70,7 +73,6 @@ p {
     background: rgba (0,0,0,0.6);
     justify-content: center;
     align-items: center;
-    display: flex;
     z-index: 1000;
 }
 
