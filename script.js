@@ -18,7 +18,6 @@ const slide = document.getElementById("slide");
 /* =====================================================
    COUNTDOWN + CONFETTI
 ===================================================== */
-
 const birthday = new Date("January 8, 2026 00:00:00").getTime();
 
 const countdownTimer = setInterval(() => {
@@ -26,7 +25,7 @@ const countdownTimer = setInterval(() => {
     const diff = birthday - now;
 
     if (diff <= 0) {
-        countdownEl.textContent = "🎉 IT’S YOUR BIRTHDAYYYYYYYY 🎉";
+        countdownEl.textContent = "🎉 IT’S YOUR BDAYYYYYYYY 🎉";
         launchConfetti();
         clearInterval(countdownTimer);
         return;
@@ -41,11 +40,9 @@ const countdownTimer = setInterval(() => {
 }, 1000);
 
 /* =====================================================
-   BACKGROUND MUSIC (SAFE TOGGLE)
+   BACKGROUND MUSIC
 ===================================================== */
-
 musicBtn.addEventListener("click", () => {
-    // Pause voice note if playing
     if (!voiceNote.paused) {
         voiceNote.pause();
         playButton.textContent = "Play 💖";
@@ -61,21 +58,29 @@ musicBtn.addEventListener("click", () => {
 });
 
 /* =====================================================
-   CAKE POPUP
+   POPUP + TYPEWRITER
 ===================================================== */
-
 cakeGif.addEventListener("click", () => {
     popupWindow.style.display = "flex";
     popupWindow.classList.add("show");
     startTyping();
 });
 
-/* =====================================================
-   VOICE NOTE (NO OVERLAP GUARANTEED)
-===================================================== */
+function startTyping() {
+    const letter = "Do remember to record yourself crying.\nEven with the distance between us,\nI'll always haunt you.\nI’m so proud of how far we've come.";
+    typewriterEl.textContent = "";
+    let charIndex = 0;
+    const typing = setInterval(() => {
+        typewriterEl.textContent += letter[charIndex];
+        charIndex++;
+        if (charIndex >= letter.length) clearInterval(typing);
+    }, 45);
+}
 
+/* =====================================================
+   VOICE NOTE
+===================================================== */
 playButton.addEventListener("click", () => {
-    // Pause background music first
     if (!bgMusic.paused) {
         bgMusic.pause();
         musicBtn.textContent = "🎵 Play Music";
@@ -90,45 +95,15 @@ playButton.addEventListener("click", () => {
     }
 });
 
-// When voice note ends
 voiceNote.addEventListener("ended", () => {
     lockedMessage.style.display = "block";
-
-    // Resume background music gently
     bgMusic.play().catch(() => {});
     musicBtn.textContent = "⏸ Pause Music";
 });
 
 /* =====================================================
-   TYPEWRITER LOVE LETTER
+   SLIDESHOW
 ===================================================== */
-
-const letter =
-"Do remember to record yourself crying.\n" +
-"Even with the distance between us,\n" +
-"I'll always haunt you.\n" +
-"I’m so proud of how far we've come.";
-
-let charIndex = 0;
-
-function startTyping() {
-    typewriterEl.textContent = "";
-    charIndex = 0;
-
-    const typing = setInterval(() => {
-        typewriterEl.textContent += letter[charIndex];
-        charIndex++;
-
-        if (charIndex >= letter.length) {
-            clearInterval(typing);
-        }
-    }, 45);
-}
-
-/* =====================================================
-   SLIDESHOW (PNG IMAGES)
-===================================================== */
-
 const photos = [
     "assets/images/photo1.png",
     "assets/images/photo2.png",
@@ -137,20 +112,18 @@ const photos = [
 ];
 
 let slideIndex = 0;
-
 setInterval(() => {
-    slide.style.opacity = 0;  // fade out
+    slide.style.opacity = 0;
     setTimeout(() => {
         slideIndex = (slideIndex + 1) % photos.length;
         slide.src = photos[slideIndex];
-        slide.style.opacity = 1; // fade in
+        slide.style.opacity = 1;
     }, 500);
 }, 3000);
 
 /* =====================================================
    SURPRISE BUTTON
 ===================================================== */
-
 surpriseBtn.addEventListener("click", () => {
     alert("I'm gonna block you now.╰(*´︶`*)╯");
 });
@@ -158,7 +131,6 @@ surpriseBtn.addEventListener("click", () => {
 /* =====================================================
    CLOSE POPUP
 ===================================================== */
-
 closeBtn.addEventListener("click", () => {
     popupWindow.classList.remove("show");
     setTimeout(() => {
