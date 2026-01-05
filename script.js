@@ -1,4 +1,4 @@
-/* ---------------- BASIC ELEMENTS ---------------- */
+/* ---------------- ELEMENTS ---------------- */
 
 const cakeGif = document.getElementById("cakeGif");
 const popupWindow = document.getElementById("popupWindow");
@@ -19,20 +19,21 @@ const lockedMessage = document.getElementById("lockedMessage");
 
 const birthday = new Date("January 8, 2026 00:00:00").getTime();
 
-const timer = setInterval(() => {
-    const now = new Date().getTime();
+const countdownTimer = setInterval(() => {
+    const now = Date.now();
     const diff = birthday - now;
 
     if (diff <= 0) {
         countdownEl.textContent = "🎉 IT’S YOUR DAY 🎉";
         launchConfetti();
-        clearInterval(timer);
+        clearInterval(countdownTimer);
         return;
     }
 
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
     countdownEl.textContent = `⏳ ${days} days left`;
 }, 1000);
+
 
 /* ---------------- BACKGROUND MUSIC ---------------- */
 
@@ -77,18 +78,39 @@ const letter =
 "I'll always haunt you.\n" +
 "I’m so proud of how far we've come.";
 
-let i = 0;
+let charIndex = 0;
 
 function startTyping() {
     typewriterEl.textContent = "";
-    i = 0;
+    charIndex = 0;
 
     const typing = setInterval(() => {
-        typewriterEl.textContent += letter[i];
-        i++;
-        if (i >= letter.length) clearInterval(typing);
+        typewriterEl.textContent += letter[charIndex];
+        charIndex++;
+
+        if (charIndex >= letter.length) {
+            clearInterval(typing);
+        }
     }, 45);
 }
+
+/* ---------------- SLIDESHOW (PNG SUPPORT) ---------------- */
+
+const photos = [
+    "assets/images/photo1.png",
+    "assets/images/photo2.png",
+    "assets/images/photo3.png",
+    "assets/images/photo4.png"
+];
+
+let slideIndex = 0;
+const slide = document.getElementById("slide");
+
+setInterval(() => {
+    slideIndex = (slideIndex + 1) % photos.length;
+    slide.src = photos[slideIndex];
+}, 3000);
+
 
 /* ---------------- SURPRISE BUTTON ---------------- */
 
