@@ -26,14 +26,18 @@ const countdownTimer = setInterval(() => {
     const diff = birthday - now;
 
     if (diff <= 0) {
-        countdownEl.textContent = "🎉 IT’S YOUR DAY 🎉";
+        countdownEl.textContent = "🎉 IT’S YOUR BIRTHDAYYYYYYYY 🎉";
         launchConfetti();
         clearInterval(countdownTimer);
         return;
     }
 
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    countdownEl.textContent = `⏳ ${days} days left`;
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    countdownEl.textContent = `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s left`;
 }, 1000);
 
 /* =====================================================
@@ -62,6 +66,7 @@ musicBtn.addEventListener("click", () => {
 
 cakeGif.addEventListener("click", () => {
     popupWindow.style.display = "flex";
+    popupWindow.classList.add("show");
     startTyping();
 });
 
@@ -134,8 +139,12 @@ const photos = [
 let slideIndex = 0;
 
 setInterval(() => {
-    slideIndex = (slideIndex + 1) % photos.length;
-    slide.src = photos[slideIndex];
+    slide.style.opacity = 0;  // fade out
+    setTimeout(() => {
+        slideIndex = (slideIndex + 1) % photos.length;
+        slide.src = photos[slideIndex];
+        slide.style.opacity = 1; // fade in
+    }, 500);
 }, 3000);
 
 /* =====================================================
@@ -151,7 +160,10 @@ surpriseBtn.addEventListener("click", () => {
 ===================================================== */
 
 closeBtn.addEventListener("click", () => {
-    popupWindow.style.display = "none";
+    popupWindow.classList.remove("show");
+    setTimeout(() => {
+        popupWindow.style.display = "none";
+    }, 300);
     voiceNote.pause();
     playButton.textContent = "Play 💖";
 });
