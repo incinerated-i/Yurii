@@ -1,3 +1,4 @@
+/* -------------------- BODY -------------------- */
 body {
     background-image: url("https://i.pinimg.com/1200x/95/0e/37/950e37283e193f90d8531c8a4cf79dcc.jpg");
     background-size: cover;
@@ -11,6 +12,7 @@ body {
     padding: 0;
 }
 
+/* -------------------- HEADINGS -------------------- */
 h1 {
     margin-top: 40 px;
 }
@@ -19,12 +21,13 @@ p {
     font-size: 1.2 rem;
 }
 
+/* -------------------- COUNTDOWN -------------------- */
 #countdown {
     font-size: 1.5 rem;
     margin: 20 px 0;
 }
 
-/* Music button */
+/* -------------------- MUSIC BUTTON -------------------- */
 #musicBtn {
     padding: 10 px 20 px;
     border-radius: 8 px;
@@ -34,7 +37,7 @@ p {
     cursor: pointer;
 }
 
-/* Cake */
+/* -------------------- CAKE -------------------- */
 #cakeContainer {
     margin-top: 30 px;
 }
@@ -49,7 +52,7 @@ p {
     transform: scale (1.1);
 }
 
-/* Slideshow */
+/* -------------------- SLIDESHOW -------------------- */
 #slideshow img {
     width: 300 px;
     border-radius: 12 px;
@@ -59,17 +62,28 @@ p {
     opacity: 1;
 }
 
-/* Popup */
+/* -------------------- POPUP -------------------- */
+#popupWindow {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba (0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    z-index: 1000;
+}
+
 #popupContent {
     background: white;
     color: black;
     padding: 30 px;
     border-radius: 12 px;
-    width: 90 % ;
+    width: 90 %;
     max-width: 420 px;
     transform: scale (0.7);
-    transition: transform 0.3 s ease, opacity 0.3 s ease;
     opacity: 0;
+    transition: transform 0.3 s ease, opacity 0.3 s ease;
 }
 
 #popupWindow.show #popupContent {
@@ -77,8 +91,12 @@ p {
     opacity: 1;
 }
 
+.popup-buttons {
+    margin: 10 px 0;
+}
+
 #popupContent button {
-    margin: 10 px;
+    margin: 5 px;
     padding: 10 px 20 px;
     border-radius: 8 px;
     border: none;
@@ -87,11 +105,13 @@ p {
     cursor: pointer;
 }
 
+/* -------------------- TYPEWRITER -------------------- */
 #typewriter {
     margin-top: 15 px;
     font-style: italic;
 }
 
+/* -------------------- LOCKED MESSAGE -------------------- */
 #lockedMessage {
     display: none;
     margin-top: 20 px;
