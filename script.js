@@ -136,6 +136,4 @@ closeBtn.addEventListener("click", () => {
     setTimeout(() => {
         popupWindow.style.display = "none";
     }, 300);
-    voiceNote.pause();
-    playButton.textContent = "Play 💖";
-});
+   
