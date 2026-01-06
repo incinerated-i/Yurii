@@ -15,6 +15,15 @@ const lockedMessage = document.getElementById("lockedMessage");
 
 const slide = document.getElementById("slide");
 
+// confetti
+function burstConfetti() {
+    confetti({
+        particleCount: 80,
+        spread: 70,
+        origin: { y: 0.6 }
+    });
+}
+
 // Surprise button locked until voice ends
 surpriseBtn.disabled = true;
 
@@ -177,6 +186,8 @@ function answerMemory(choice) {
 
     if (choice === current.correct) {
         memoryFeedbackEl.textContent = "✔ " + current.response;
+        burstConfetti();
+        
     } else {
         memoryFeedbackEl.textContent = "✖ Nah. 😒";
     }
