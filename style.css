@@ -110,14 +110,16 @@ section {
 
 /* -------------------- POPUP -------------------- */
 #popupWindow {
-    display: none;
+    display: none; /* Hidden by default */
     position: fixed;
     inset: 0;
     background: rgba (0,0,0,0.6);
-    display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
+}
+#popupWindow.show {
+    display: flex; /* Only show when .show is added */
 }
 #popupContent {
     background: white;
@@ -134,6 +136,7 @@ section {
     transform: scale (1);
     opacity: 1;
 }
+
 .popup-buttons button {
     margin: 5 px;
     padding: 10 px 20 px;
