@@ -56,14 +56,21 @@ section {
     justify-content: center;
     align-items: center;
 }
+
+/* Cake Jump on Hover */
 #cakeGif {
     width: 420 px;
     cursor: pointer;
-    transition: transform 0.4 s ease;
+    transition: transform 0.3 s ease, filter 0.3 s ease;
+    position: relative;
 }
+
+/* Jump effect */
 #cakeGif:hover {
-    transform: scale (1.15);
+    transform: translateY (-20 px) scale (1.15);
+    filter: brightness (1.2) drop-shadow (0 0 15 px #fff);
 }
+
 .hint {
     margin-top: 15 px;
     opacity: 0.8;
