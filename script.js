@@ -76,10 +76,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function startTyping() {
         const letter =
-            "I really hoped you'd see this the moment I sent, but now is also fine.\n" +
-            "Even with the distance between us,\n" +
+            "I really hoped you'd see this the moment I sent it over, but now is also fine.\n" +
+            "Even with the longggggg distance between us,\n" +
             "I'll always haunt you.\n" +
-            "I’m so proud of how far we've come.";
+            "But lowkey, Ran...I’m proud of how far we've come and ngl I like it-being ur best dawg.";
 
         typewriterEl.textContent = "";
         let charIndex = 0;
@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         voiceNote.pause();
         voiceNote.currentTime = 0;
-        playButton.textContent = "Play 💖";
+        playButton.textContent = "Play Voice💖";
 
         // Lock surprise again
         surpriseBtn.disabled = true;
@@ -140,7 +140,9 @@ document.addEventListener("DOMContentLoaded", () => {
         "assets/images/photo1.png",
         "assets/images/photo2.png",
         "assets/images/photo3.png",
-        "assets/images/photo4.png"
+        "assets/images/photo4.png",
+        "assets/images/photo5.png",
+        "assets/images/photo6.png"
     ];
 
     let slideIndex = 0;
@@ -156,37 +158,70 @@ document.addEventListener("DOMContentLoaded", () => {
     // --- Memory Game ---
     const memoryQuestions = [
         { q: "Who is the smarter one?", correct: 0, response: "Duh obviously its me 🙄" },
+        { q: "Who always rage-bait the other?", correct: 1, response: "And I hate you for that.(not)" },
         { q: "Who carries the games?", correct: 0, response: "Obviously me. No debate." },
+        { q: "Who makes all the funny jokes??", correct: 0, response: "I've got golden humour fr" },
+        { q: "Who is more likely to be arrested?", correct: 1, response: "What a rebellious kid. Tsk tsk.." },
+        { q: "Who is a good boy?", correct: 1, response: "Yes, you are...........NOT." },
+        { q: "Who will always reply like an AI?", correct: 1, response: "Do better, Ranch" },
         { q: "Who will leave first?", correct: 0, response: ". . ." }
     ];
 
     let memoryIndex = 0;
-
-    function loadMemoryQuestion() {
-        if (memoryIndex >= memoryQuestions.length) {
-            memoryQuestionEl.textContent = "You passed!!! I guess you do know your stuffs welll!";
-            memoryFeedbackEl.textContent = "";
-            return;
-        }
-        memoryQuestionEl.textContent = memoryQuestions[memoryIndex].q;
-        memoryFeedbackEl.textContent = "";
-    }
+    let memoryScore = 0;
 
     function answerMemory(choice) {
-        const current = memoryQuestions[memoryIndex];
+    const current = memoryQuestions[memoryIndex];
 
-        if (choice === current.correct) {
-            memoryFeedbackEl.textContent = "✔ " + current.response;
-            burstConfetti();
-        } else {
-            memoryFeedbackEl.textContent = "✖ Nah. 😒";
-        }
-
-        memoryIndex++;
-        setTimeout(loadMemoryQuestion, 1500);
+    if (choice === current.correct) {
+        memoryFeedbackEl.textContent = "✔ " + current.response;
+        memoryScore++;               
+        burstConfetti();
+    } else {
+        memoryFeedbackEl.textContent = "✖ Nah. Capper. 😒";
     }
 
-    window.answerMemory = answerMemory; // expose for HTML onclick
+    memoryIndex++;
+    setTimeout(loadMemoryQuestion, 1500);
+}
+function loadMemoryQuestion() {
+    const total = memoryQuestions.length;
+
+    if (memoryIndex >= total) {
+        const ratio = memoryScore / total;
+        if (ratio >= 0.75) {
+            memoryQuestionEl.textContent =
+                "No way, You actually know the truthhhhh! Ig you deserved this present after all.";
+            memoryFeedbackEl.innerHTML =
+                `Score: ${memoryScore} / ${total}<br>
+                 I'm surprisedd.`;
+            burstConfetti();
+            burstConfetti();
+            burstConfetti();
+        } else if (ratio >= 0.5) {
+            memoryQuestionEl.textContent =
+                "Well, if only you had followed the truths.";
+
+            memoryFeedbackEl.innerHTML =
+                `Score: ${memoryScore} / ${total}<br>
+                 Tsk, you are anoyyyyiiinnggg`;
+
+            burstConfetti();
+        } else {
+            memoryQuestionEl.textContent =
+                "Bitchhh, you obviously rage-baiting me atp. Tsk, this is why I HATE YOUUU >:< ";
+
+            memoryFeedbackEl.innerHTML =
+                `Score: ${memoryScore} / ${total}<br>
+                 Broski's an opp.`;
+        }
+        return;
+    }
+    memoryQuestionEl.textContent = memoryQuestions[memoryIndex].q;
+    memoryFeedbackEl.textContent = "";
+}
+
+    window.answerMemory = answerMemory;
     loadMemoryQuestion();
 
     // --- Story Game ---
@@ -196,13 +231,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (choice === "stay") {
             storyText.textContent =
-                "You stay. The conversation drifts from jokes to silence — the comfortable kind. She smiles, even from far away.";
+                "You like it!!!!! ( ` ω ´ ) I'm so gladddd. Honestly it's because a part of me want you to feel special too (cuz u a special-needs kid). Okay, kiddin. But, you do mean the world to me...or that's what I think lmao.";
         } else {
             storyText.textContent =
-                "You go to sleep. But somehow, you still think about her. Distance doesn’t make feelings disappear.";
+                "You don't like it? You must be lying through your teeth right now, dumbass. You should be ashamed!!!!!!";
         }
 
-        choices.innerHTML = "<p>💭 Some choices stay with you.</p>";
+        choices.innerHTML = "<p>💭 I wonder how long we can stay as best vros.</p>";
     }
 
     window.storyChoice = storyChoice; // expose for HTML onclick
