@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // --- Countdown Timer ---
-    const birthday = new Date("January 8, 2026 00:00:00").getTime();
+    const birthday = new Date("January 8, 2026 06:01:00").getTime();
     const countdownTimer = setInterval(() => {
         const diff = birthday - Date.now();
 
