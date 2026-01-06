@@ -36,7 +36,6 @@ const countdownTimer = setInterval(() => {
     if (diff <= 0) {
         countdownEl.textContent = "🎉 IT’S YOUR BDAYYYYYYYY 🎉";
 
-        // Safe confetti call
         if (typeof launchConfetti === "function") {
             launchConfetti();
         }
@@ -70,11 +69,25 @@ musicBtn.addEventListener("click", () => {
     }
 });
 
-/* ===================== POPUP + TYPEWRITER ===================== */
+/* ===================== CAKE + POPUP + TYPEWRITER ===================== */
+// Sparkle effect when hovering cake
+cakeGif.addEventListener("mouseenter", () => {
+    confetti({
+        particleCount: 20,
+        spread: 50,
+        origin: { y: 0.5 },
+        colors: ['#ffffff','#ff9ecb','#ff4d4d'],
+        scalar: 0.6
+    });
+});
+
 cakeGif.addEventListener("click", () => {
     popupWindow.style.display = "flex";
     popupWindow.classList.add("show");
     startTyping();
+
+    // Confetti explosion on cake click
+    burstConfetti();
 });
 
 function startTyping() {
