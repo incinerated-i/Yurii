@@ -137,6 +137,72 @@ setInterval(() => {
     }, 500);
 }, 3000);
 
+/* ===================== MEMORY GAME ===================== */
+const memoryQuestions = [
+    {
+        q: "Who is the smarter one?",
+        correct: 0,
+        response: "Duh obviously its me 🙄"
+    },
+    {
+        q: "Who carries the games?",
+        correct: 0,
+        response: "Obviously me. No debate."
+    },
+    {
+        q: "Who will leave first?",
+        correct: 0,
+        response: ". . ."
+    }
+];
+
+let memoryIndex = 0;
+
+const memoryQuestionEl = document.getElementById("memoryQuestion");
+const memoryFeedbackEl = document.getElementById("memoryFeedback");
+
+function loadMemoryQuestion() {
+    if (memoryIndex >= memoryQuestions.length) {
+        memoryQuestionEl.textContent = "You passed!!! I guess you do know your stuffs welll!";
+        memoryFeedbackEl.textContent = "";
+        return;
+    }
+
+    memoryQuestionEl.textContent = memoryQuestions[memoryIndex].q;
+    memoryFeedbackEl.textContent = "";
+}
+
+function answerMemory(choice) {
+    const current = memoryQuestions[memoryIndex];
+
+    if (choice === current.correct) {
+        memoryFeedbackEl.textContent = "✔ " + current.response;
+    } else {
+        memoryFeedbackEl.textContent = "✖ Nah. 😒";
+    }
+
+    memoryIndex++;
+    setTimeout(loadMemoryQuestion, 1500);
+}
+
+loadMemoryQuestion();
+
+/* ===================== STORY GAME ===================== */
+function storyChoice(choice) {
+    const storyText = document.getElementById("storyText");
+    const choices = document.querySelector("#storyGame .choices");
+
+    if (choice === "stay") {
+        storyText.textContent =
+            "You stay. The conversation drifts from jokes to silence — the comfortable kind. She smiles, even from far away.";
+    } else {
+        storyText.textContent =
+            "You go to sleep. But somehow, you still think about her. Distance doesn’t make feelings disappear.";
+    }
+
+    choices.innerHTML = "<p>💭 Some choices stay with you.</p>";
+}
+
 /* ===================== SURPRISE BUTTON ===================== */
 surpriseBtn.addEventListener("click", () => {
     if (surpriseBtn.disabled) return;
