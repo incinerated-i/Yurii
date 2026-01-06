@@ -44,9 +44,8 @@ p {
 /* -------------------- SECTIONS -------------------- */
 section {
     width: 100 %;
-    padding: 100 px 20 px;
+    padding: 120 px 20 px;
 }
-
 
 /* -------------------- CAKE SECTION -------------------- */
 #cakeSection {
@@ -78,21 +77,36 @@ section {
 }
 
 
-/* -------------------- MEMORIES -------------------- */
-#memoriesSection h2 {
-    margin-bottom: 20 px;
+/* --- MEMORIES SECTION --- */
+#memoriesSection {
+    position: relative;
 }
+
+#memoriesSection::after {
+    content: "";
+    display: block;
+    height: 200 px; /* visual buffer */
+}
+
 #slideshow {
+    width: 100 %;
+    max-width: 320 px;
+    height: 320 px;          /* 🔒 FIXED HEIGHT */
+    margin: 0 auto;
     display: flex;
     justify-content: center;
+    align-items: center;
+    overflow: hidden;       /* hides overflow from tall images */
 }
+
 #slideshow img {
-    width: 220 px;
+    width: 100 %;
+    height: 100 %;
+    object-fit: cover;      /* 🔑 maintains layout regardless of ratio */
     border-radius: 12 px;
     box-shadow: 0 0 10 px rgba (0,0,0,0.5);
     transition: opacity 1 s ease-in-out;
 }
-
 
 /* -------------------- FOOTER -------------------- */
 #bottomLink {
@@ -188,6 +202,8 @@ section {
 
 /* -------------------- STORY GAME -------------------- */
 #storyGame {
+    border-top: 2 px dashed rgba (255,255,255,0.3);
+    margin-top: 300 px;
     margin: 100 px auto;
     max-width: 600 px;
     padding: 30 px;
