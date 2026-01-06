@@ -25,11 +25,15 @@ const countdownTimer = setInterval(() => {
     const diff = birthday - now;
 
     if (diff <= 0) {
-        countdownEl.textContent = "🎉 IT’S YOUR BDAYYYYYYYY 🎉";
+    countdownEl.textContent = "🎉 IT’S YOUR BDAYYYYYYYY 🎉";
+
+    if (typeof launchConfetti === "function") {
         launchConfetti();
-        clearInterval(countdownTimer);
-        return;
     }
+
+    clearInterval(countdownTimer);
+    return;
+}
 
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
     const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -133,7 +137,11 @@ surpriseBtn.addEventListener("click", () => {
 ===================================================== */
 closeBtn.addEventListener("click", () => {
     popupWindow.classList.remove("show");
+
     setTimeout(() => {
         popupWindow.style.display = "none";
     }, 300);
-   
+
+    voiceNote.pause();
+    playButton.textContent = "Play 💖";
+});
