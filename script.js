@@ -15,38 +15,38 @@ const lockedMessage = document.getElementById("lockedMessage");
 
 const slide = document.getElementById("slide");
 
-/* =====================================================
-   COUNTDOWN + CONFETTI
-===================================================== */
+// Surprise button locked until voice ends
+surpriseBtn.disabled = true;
+
+/* ===================== COUNTDOWN ===================== */
 const birthday = new Date("January 8, 2026 00:00:00").getTime();
 
 const countdownTimer = setInterval(() => {
-    const now = Date.now();
-    const diff = birthday - now;
+    const diff = birthday - Date.now();
 
     if (diff <= 0) {
-    countdownEl.textContent = "🎉 IT’S YOUR BDAYYYYYYYY 🎉";
+        countdownEl.textContent = "🎉 IT’S YOUR BDAYYYYYYYY 🎉";
 
-    if (typeof launchConfetti === "function") {
-        launchConfetti();
+        // Safe confetti call
+        if (typeof launchConfetti === "function") {
+            launchConfetti();
+        }
+
+        clearInterval(countdownTimer);
+        return;
     }
-
-    clearInterval(countdownTimer);
-    return;
-}
 
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
     const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-    countdownEl.textContent = `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s left`;
+    countdownEl.textContent = `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s`;
 }, 1000);
 
-/* =====================================================
-   BACKGROUND MUSIC
-===================================================== */
+/* ===================== BACKGROUND MUSIC ===================== */
 musicBtn.addEventListener("click", () => {
+    // Never overlap voice note
     if (!voiceNote.paused) {
         voiceNote.pause();
         playButton.textContent = "Play 💖";
@@ -61,9 +61,7 @@ musicBtn.addEventListener("click", () => {
     }
 });
 
-/* =====================================================
-   POPUP + TYPEWRITER
-===================================================== */
+/* ===================== POPUP + TYPEWRITER ===================== */
 cakeGif.addEventListener("click", () => {
     popupWindow.style.display = "flex";
     popupWindow.classList.add("show");
@@ -71,20 +69,28 @@ cakeGif.addEventListener("click", () => {
 });
 
 function startTyping() {
-    const letter = "Do remember to record yourself crying.\nEven with the distance between us,\nI'll always haunt you.\nI’m so proud of how far we've come.";
+    const letter =
+        "I really hoped you'd see this the moment I sent, but now is also fine.\n" +
+        "Even with the distance between us,\n" +
+        "I'll always haunt you.\n" +
+        "I’m so proud of how far we've come.";
+
     typewriterEl.textContent = "";
     let charIndex = 0;
+
     const typing = setInterval(() => {
         typewriterEl.textContent += letter[charIndex];
         charIndex++;
-        if (charIndex >= letter.length) clearInterval(typing);
+
+        if (charIndex >= letter.length) {
+            clearInterval(typing);
+        }
     }, 45);
 }
 
-/* =====================================================
-   VOICE NOTE
-===================================================== */
+/* ===================== VOICE NOTE ===================== */
 playButton.addEventListener("click", () => {
+    // Pause background music first
     if (!bgMusic.paused) {
         bgMusic.pause();
         musicBtn.textContent = "🎵 Play Music";
@@ -99,15 +105,19 @@ playButton.addEventListener("click", () => {
     }
 });
 
+// Unlock surprise ONLY when voice finishes
 voiceNote.addEventListener("ended", () => {
     lockedMessage.style.display = "block";
+
+    surpriseBtn.disabled = false;
+    surpriseBtn.textContent = "Surprise 💌";
+
+    // Resume background music gently
     bgMusic.play().catch(() => {});
     musicBtn.textContent = "⏸ Pause Music";
 });
 
-/* =====================================================
-   SLIDESHOW
-===================================================== */
+/* ===================== SLIDESHOW ===================== */
 const photos = [
     "assets/images/photo1.png",
     "assets/images/photo2.png",
@@ -116,8 +126,10 @@ const photos = [
 ];
 
 let slideIndex = 0;
+
 setInterval(() => {
     slide.style.opacity = 0;
+
     setTimeout(() => {
         slideIndex = (slideIndex + 1) % photos.length;
         slide.src = photos[slideIndex];
@@ -125,16 +137,14 @@ setInterval(() => {
     }, 500);
 }, 3000);
 
-/* =====================================================
-   SURPRISE BUTTON
-===================================================== */
+/* ===================== SURPRISE BUTTON ===================== */
 surpriseBtn.addEventListener("click", () => {
-    alert("I'm gonna block you now.╰(*´︶`*)╯");
+    if (surpriseBtn.disabled) return;
+
+    alert("I'm gonna block you now. ╰(*´︶`*)╯");
 });
 
-/* =====================================================
-   CLOSE POPUP
-===================================================== */
+/* ===================== CLOSE POPUP ===================== */
 closeBtn.addEventListener("click", () => {
     popupWindow.classList.remove("show");
 
@@ -143,5 +153,9 @@ closeBtn.addEventListener("click", () => {
     }, 300);
 
     voiceNote.pause();
+    voiceNote.currentTime = 0;
     playButton.textContent = "Play 💖";
+
+    // Lock surprise again if popup reopens
+    surpriseBtn.disabled = true;
 });
