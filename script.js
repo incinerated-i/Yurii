@@ -229,7 +229,7 @@ function loadMemoryQuestion() {
         const storyText = document.getElementById("storyText");
         const choices = document.querySelector("#storyGame .choices");
 
-        if (choice === "stay") {
+        if (choice === "yeah") {
             storyText.textContent =
                 "You like it!!!!! ( ` ω ´ ) I'm so gladddd. Honestly it's because a part of me want you to feel special too (cuz u a special-needs kid). Okay, kiddin. But, you do mean the world to me...or that's what I think lmao.";
         } else {
