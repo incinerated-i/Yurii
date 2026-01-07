@@ -61,9 +61,21 @@ I made this just for you (´｡• ᵕ •｡`) ♡ <br>
 
   <!-- MAP -->
 <section id="mapSection">
-    <h2>This place reminded me of you</h2>
+    <h2>Breath-takin places</h2>
+
+    <div id="mapButtons">
+        <button onclick="changeMap(0)">Place 1</button>
+        <button onclick="changeMap(1)">Place 2</button>
+        <button onclick="changeMap(0)">Place 3</button>
+        <button onclick="changeMap(1)">Place 4</button>
+        <button onclick="changeMap(0)">Place 5</button>
+        <button onclick="changeMap(1)">Place 6</button>
+        <button onclick="changeMap(0)">Place 7</button>
+        <button onclick="changeMap(1)">Place 8</button>
+    </div>
 
     <iframe
+        id="mapFrame"
         src="https://www.google.com/maps/embed?pb=!4v1767774687928!6m8!1m7!1sqjIOYIB_OujEayuPBsUXzw!2m2!1d54.10768613335556!2d159.9851103911956!3f93.44184358199071!4f36.55819411358391!5f1.1065099421335651"
         width="100%"
         height="450"
@@ -75,7 +87,7 @@ I made this just for you (´｡• ᵕ •｡`) ♡ <br>
 
     <p class="mapHint">Isn't it pretty?</p>
 </section>
-<div class="scrollSpacer big"></div>
+
 
 <!-- FUN GAME -->
 <section id="memoryGame">
