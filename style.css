@@ -105,23 +105,26 @@ button:hover {
     height: 300px;
 }
 
-/* -------------------- MEMORIES -------------------- */
+/* -------------------- SLIDESHOW (LARGE & CINEMATIC) -------------------- */
 #slideshow {
-    width: 100%;
-    max-width: 320px;
-    height: 320px;
-    margin: 0 auto;
+    width: 85vw;            /* most of screen width */
+    max-width: 1100px;
+    height: 70vh;           /* most of screen height */
+    max-height: 650px;
+
+    margin: 60px auto;
     overflow: hidden;
 }
-
 #slideshow img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 14px;
-    box-shadow: 0 0 14px rgba(0, 0, 0, 0.6);
+
+    border-radius: 22px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
     transition: opacity 1s ease-in-out;
 }
+
 
 /* -------------------- MAP SECTION -------------------- */
 #mapSection {
@@ -280,4 +283,19 @@ button:hover {
     margin-top: 20px;
     font-weight: bold;
     color: #ffd1e8;
+}
+
+/* -------------------- LOCKED SURPRISE BUTTON -------------------- */
+#surpriseBtn {
+    background: rgba(180, 180, 180, 0.25);
+    color: rgba(255, 255, 255, 0.6);
+    cursor: not-allowed;
+
+    box-shadow: none;
+    filter: grayscale(100%);
+}
+#surpriseBtn:hover {
+    background: rgba(180, 180, 180, 0.25);
+    transform: none;
+    box-shadow: none;
 }
