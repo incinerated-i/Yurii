@@ -155,8 +155,8 @@ document.addEventListener("DOMContentLoaded", () => {
         lockedMessage.style.display = "block";
         setTimeout(() => {
         surpriseBtn.disabled = false;
-        surpriseBtn.classList.add("highlight");
-    }, 50);
+        surpriseBtn.classList.add("highlight");   // existing
+        surpriseBtn.style.background = "#ff9ecb";  
 
         if (bgMusic.paused) {
             bgMusic.play().catch(() => {});
