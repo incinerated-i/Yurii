@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // --- COUNTDOWN ---
-    const birthday = new Date("January 8, 2026 00:00:00").getTime();
+    const birthday = new Date("January 8, 2026 06:10:00").getTime();
     const countdownTimer = setInterval(() => {
         const diff = birthday - Date.now();
         if (diff <= 0) {
