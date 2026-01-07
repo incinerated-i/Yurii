@@ -119,6 +119,19 @@ section {
     opacity: 0.25;
     color: white;
 }
+
+/* --- MAP SECTION --- */
+#mapSection {
+    max-width: 800 px;
+    margin: 0 auto;
+    padding: 120 px 20 px;
+}
+.mapHint {
+    margin-top: 10 px;
+    font-style: italic;
+    opacity: 0.8;
+}
+
 /* -------------------- MEMORY GAME -------------------- */
 #memoryGame {
     margin: 90 px auto;
