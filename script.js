@@ -152,8 +152,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // NEW: secret message ONLY shows after voice ends
     voiceNote.addEventListener("ended", () => {
         lockedMessage.style.display = "block";
+        setTimeout(() => {
         surpriseBtn.disabled = false;
         surpriseBtn.classList.add("highlight");
+    }, 50);
 
         if (bgMusic.paused) {
             bgMusic.play().catch(() => {});
