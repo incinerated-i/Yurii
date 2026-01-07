@@ -78,7 +78,7 @@ section {
 /* --- MEMORIES SECTION --- */
 #memoriesSection {
     position: relative;
-    margin-bottom: 500 px; /* SOLUTION 1 */
+    margin-bottom: 500 px;
 }
 
 #slideshow {
@@ -132,6 +132,37 @@ section {
     opacity: 0.8;
 }
 
+
+/* -------------------- APPRECIATION SECTION -------------------- */
+#appreciationSection {
+    padding: 100 px 20 px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba (0, 0, 0, 0.4); /* optional semi-transparent background for contrast */
+}
+#appreciationSection h2 {
+    font-family: 'Georgia', serif; /* You can change this to any font you want */
+    font-size: 2 rem;
+    margin-bottom: 30 px;
+    color: #ff9ecb;
+}
+.appreciationBox {
+    background: rgba (255, 77, 77, 0.1); /* light pink translucent box */
+    border: 2 px solid #ff9ecb;
+    border-radius: 16 px;
+    padding: 40 px;
+    max-height: 400 px;
+    overflow-y: auto;
+    max-width: 700 px;
+    width: 90 %;
+    font-family: 'Courier New', monospace; /* Change to any font you like */
+    font-size: 1.2 rem;
+    line-height: 1.6;
+    color: white;
+    text-align: left;
+    box-shadow: 0 8 px 20 px rgba (0,0,0,0.4);
+}
 /* -------------------- MEMORY GAME -------------------- */
 #memoryGame {
     margin: 90 px auto;
