@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
             iframe.src = maps[index];
         }
     }
-    window.changeMap = changeMap; // expose to HTML
+    window.changeMap = changeMap;
 
     // --- Confetti Function ---
     function burstConfetti(times = 1) {
@@ -87,15 +87,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // --- Popup Opened Flag ---
-    let popupOpened = false; // popup only opens once
+    let popupOpened = false; 
 
-    // --- Cake Click: Confetti always, popup only once ---
     cakeGif.addEventListener("click", () => {
-        // Confetti every click
         burstConfetti();
-
-        // Popup only once
         if (!popupOpened) {
             popupOpened = true;
             popupWindow.classList.add("show");
@@ -103,48 +98,38 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // --- Close Popup ---
     closeBtn.addEventListener("click", () => {
         popupWindow.classList.remove("show");
-
         voiceNote.pause();
         voiceNote.currentTime = 0;
         playButton.textContent = "Play 💖";
-
         voiceProgressBar.style.width = "0%";
         voiceTime.textContent = "0:00 / 0:00";
-
         lockedMessage.style.display = "none";
         surpriseBtn.disabled = true;
         surpriseBtn.classList.remove("highlight");
     });
 
-    /* ===================== TYPEWRITER ===================== */
     function startTyping() {
         const letter =
             "Lmao..I'm still sick so my voice will be weird.\n" +
             "But oh well, I tried....\n" +
             "bleh bleh, I'll always haunt you.\n" +
             "But lowkey, Ran...I’m proud of how far we've come and ngl, I like it-being ur best dawg.";
-
         typewriterEl.textContent = "";
         let charIndex = 0;
-
         const typing = setInterval(() => {
             typewriterEl.textContent += letter[charIndex];
             charIndex++;
-
             if (charIndex >= letter.length) clearInterval(typing);
         }, 45);
     }
 
-    /* ===================== VOICE NOTE ===================== */
     playButton.addEventListener("click", () => {
         if (!bgMusic.paused) {
             bgMusic.pause();
             musicBtn.textContent = "🎵 Play Music";
         }
-
         if (voiceNote.paused) {
             voiceNote.play().catch(() => {});
             playButton.textContent = "Pause 💖";
@@ -156,23 +141,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
     voiceNote.addEventListener("timeupdate", () => {
         if (!voiceNote.duration) return;
-
         const percent = (voiceNote.currentTime / voiceNote.duration) * 100;
         voiceProgressBar.style.width = percent + "%";
-
         voiceTime.textContent =
             formatTime(voiceNote.currentTime) + " / " +
             formatTime(voiceNote.duration);
     });
 
+    // --- FIXED: lockedMessage only shows after audio truly ends ---
     voiceNote.addEventListener("ended", () => {
-        lockedMessage.style.display = "block";
-
-        surpriseBtn.disabled = false;
-        surpriseBtn.classList.add("highlight");
-
-        bgMusic.play().catch(() => {});
-        musicBtn.textContent = "⏸ Pause Music";
+        // Safety check to ensure it’s really finished
+        if (voiceNote.currentTime >= voiceNote.duration - 0.05) {
+            lockedMessage.style.display = "block";
+            surpriseBtn.disabled = false;
+            surpriseBtn.classList.add("highlight");
+            if (bgMusic.paused) {
+                bgMusic.play().catch(() => {});
+                musicBtn.textContent = "⏸ Pause Music";
+            }
+        }
     });
 
     function formatTime(sec) {
@@ -181,7 +168,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return `${m}:${s < 10 ? "0" : ""}${s}`;
     }
 
-    // --- Slideshow ---
     const photos = [
         "assets/images/photo1.png",
         "assets/images/photo2.png",
@@ -190,7 +176,6 @@ document.addEventListener("DOMContentLoaded", () => {
         "assets/images/photo5.png",
         "assets/images/photo6.png"
     ];
-
     let slideIndex = 0;
     setInterval(() => {
         slide.style.opacity = 0;
@@ -201,7 +186,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 500);
     }, 3000);
 
-    // --- Memory Game ---
     const memoryQuestions = [
         { q: "Who is the smarter one?", correct: 0, response: "Duh obviously its me 🙄" },
         { q: "Who always rage-bait the other?", correct: 1, response: "And I hate you for that.(not)" },
@@ -218,7 +202,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function answerMemory(choice) {
         const current = memoryQuestions[memoryIndex];
-
         if (choice === current.correct) {
             memoryFeedbackEl.textContent = "✔ " + current.response;
             memoryScore++;
@@ -226,14 +209,12 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             memoryFeedbackEl.textContent = "✖ Nah. Capper. 😒";
         }
-
         memoryIndex++;
         setTimeout(loadMemoryQuestion, 1500);
     }
 
     function loadMemoryQuestion() {
         const total = memoryQuestions.length;
-
         if (memoryIndex >= total) {
             const ratio = memoryScore / total;
             if (ratio >= 0.75) {
@@ -252,7 +233,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             return;
         }
-
         memoryQuestionEl.textContent = memoryQuestions[memoryIndex].q;
         memoryFeedbackEl.textContent = "";
     }
@@ -260,7 +240,6 @@ document.addEventListener("DOMContentLoaded", () => {
     window.answerMemory = answerMemory;
     loadMemoryQuestion();
 
-    // --- Story Game ---
     window.storyChoice = function (choice) {
         const storyText = document.getElementById("storyText");
         const choices = document.querySelector("#storyGame .choices");
@@ -278,9 +257,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         choices.innerHTML = "<p>💭 I wonder how long we can stay as best vros.</p>";
     };
-    window.storyChoice = storyChoice; // expose for HTML onclick
+    window.storyChoice = storyChoice;
 
-    // --- Surprise Button & Hidden Gift ---
     surpriseBtn.addEventListener("click", () => {
         if (surpriseBtn.disabled) return;
         burstConfetti(2);
