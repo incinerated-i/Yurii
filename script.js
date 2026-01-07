@@ -34,16 +34,12 @@ document.addEventListener("DOMContentLoaded", () => {
         "https://www.google.com/maps/embed?pb=!4v1767778888141!6m8!1m7!1sebD0tfckmx0M63FdVsQeCw!2m2!1d-36.84211890042714!2d174.764817313202!3f83.50406391649241!4f-9.395703213249533!5f0.4000000000000002"
     ];
 
-    // --- Map Switching Function ---
     function changeMap(index) {
         const iframe = document.getElementById("mapFrame");
-        if (maps[index]) {
-            iframe.src = maps[index];
-        }
+        if (maps[index]) iframe.src = maps[index];
     }
     window.changeMap = changeMap;
 
-    // --- Confetti Function ---
     function burstConfetti(times = 1) {
         for (let i = 0; i < times; i++) {
             confetti({
@@ -55,7 +51,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // --- Countdown Timer ---
     const birthday = new Date("January 8, 2026 00:00:00").getTime();
     const countdownTimer = setInterval(() => {
         const diff = birthday - Date.now();
@@ -72,7 +67,6 @@ document.addEventListener("DOMContentLoaded", () => {
         countdownEl.textContent = `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s`;
     }, 1000);
 
-    // --- Background Music ---
     musicBtn.addEventListener("click", () => {
         if (!voiceNote.paused) {
             voiceNote.pause();
@@ -87,14 +81,19 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    let popupOpened = false; 
+    let popupOpened = false;
 
     cakeGif.addEventListener("click", () => {
         burstConfetti();
         if (!popupOpened) {
             popupOpened = true;
             popupWindow.classList.add("show");
-            lockedMessage.style.display = "none"; // hide secret message at popup start
+
+            // HIDE secret message at start
+            lockedMessage.style.display = "none";
+            surpriseBtn.disabled = true;
+            surpriseBtn.classList.remove("highlight");
+
             startTyping();
         }
     });
@@ -117,6 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "But oh well, I tried....\n" +
             "bleh bleh, I'll always haunt you.\n" +
             "But lowkey, Ran...I’m proud of how far we've come and ngl, I like it-being ur best dawg.";
+
         typewriterEl.textContent = "";
         let charIndex = 0;
         const typing = setInterval(() => {
@@ -149,19 +149,17 @@ document.addEventListener("DOMContentLoaded", () => {
             formatTime(voiceNote.duration);
     });
 
-voiceNote.addEventListener("ended", () => {
-    if (voiceNote.currentTime >= voiceNote.duration - 0.05) {
+    // NEW: secret message ONLY shows after voice ends
+    voiceNote.addEventListener("ended", () => {
         lockedMessage.style.display = "block";
         surpriseBtn.disabled = false;
         surpriseBtn.classList.add("highlight");
 
-        // auto-play background music after voice ends
         if (bgMusic.paused) {
             bgMusic.play().catch(() => {});
             musicBtn.textContent = "⏸ Pause Music";
         }
-    }
-});
+    });
 
     function formatTime(sec) {
         const m = Math.floor(sec / 60);
@@ -177,6 +175,7 @@ voiceNote.addEventListener("ended", () => {
         "assets/images/photo5.png",
         "assets/images/photo6.png"
     ];
+
     let slideIndex = 0;
     setInterval(() => {
         slide.style.opacity = 0;
@@ -244,7 +243,6 @@ voiceNote.addEventListener("ended", () => {
     window.storyChoice = function (choice) {
         const storyText = document.getElementById("storyText");
         const choices = document.querySelector("#storyGame .choices");
-
         if (choice === "yeah") {
             storyText.textContent =
                 "You like it!!!!! ( ` ω ´ ) I'm so gladddd." +
