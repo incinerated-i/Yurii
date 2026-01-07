@@ -138,30 +138,25 @@ section {
     width: 100 %;
     display: flex;
     justify-content: center;
-    padding: 100 px 20 px; /* space around section */
+    padding: 100 px 20 px;
 }
 
 .appreciationBox {
-    max-width: 550 px;      /* limits horizontal width so text doesn't sprawl */
+    max-width: 560 px;
     width: 100 %;
-    background: rgba (255, 255, 255, 0.15); /* translucent white */
-    backdrop-filter: blur (8 px);           /* frosted glass effect */
+    background: rgba (255, 255, 255, 0.18);
+    backdrop-filter: blur (8 px);
     color: white;
     padding: 40 px;
-    border-radius: 16 px;
+    border-radius: 18 px;
     text-align: center;
-    font-family: 'Georgia', serif; /* change to any font you like */
-    box-shadow: 0 0 20 px rgba (0,0,0,0.3);
-    line-height: 1.6;
+    font-family: 'Georgia', serif;
+    box-shadow: 0 10 px 30 px rgba (0,0,0,0.35);
+    line-height: 1.7;
 
-    opacity: 0;             /* initial invisible for animation */
-    transform: translate Y (40 px); /* start slightly down */
-    transition: opacity 1 s ease, transform 1 s ease;
-}
-
-.appreciationBox.visible {
+    /* IMPORTANT: visible by default */
     opacity: 1;
-    transform: translate Y (0);
+    transform: translateY (0);
 }
 
 .appreciationBox h2 {
@@ -170,10 +165,9 @@ section {
 }
 
 .appreciationBox p {
-    margin-bottom: 15 px;
+    margin-bottom: 16 px;
     font-size: 1.1 rem;
 }
-
 
 /* -------------------- MEMORY GAME -------------------- */
 #memoryGame {
