@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const memoryQuestionEl = document.getElementById("memoryQuestion");
     const memoryFeedbackEl = document.getElementById("memoryFeedback");
+    const finalGifLink = document.getElementById("finalGifLink");
 
     const maps = [
         "https://www.google.com/maps/embed?pb=!4v1767774687928!6m8!1m7!1sqjIOYIB_OujEayuPBsUXzw!2m2!1d54.10768613335556!2d159.9851103911956!3f93.44184358199071!4f36.55819411358391!5f1.1065099421335651",
