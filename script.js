@@ -22,6 +22,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const memoryQuestionEl = document.getElementById("memoryQuestion");
     const memoryFeedbackEl = document.getElementById("memoryFeedback");
+    const maps = [
+      "https://www.google.com/maps/embed?pb=!4v1767774687928!6m8!1m7!1sqjIOYIB_OujEayuPBsUXzw!2m2!1d54.10768613335556!2d159.9851103911956!3f93.44184358199071!4f36.55819411358391!5f1.1065099421335651",
+      "https://www.google.com/maps/embed?pb=!4v1767776522007!6m8!1m7!1sCAoSLEFGMVFpcE02Z2dwSFk3UzlQUkVXMHhya3dNVTB2dE83UG1xNDNJUWhiTV94!2m2!1d43.7832745612107!2d144.3124974986362!3f173.61681100620956!4f-2.2664889671150803!5f0.7820865974627469",
+      "https://www.google.com/maps/embed?pb=!4v1767778389908!6m8!1m7!1sCAoSLEFGMVFpcE5NZUJkVDdIbXktR1ROTnlBa3kxSWZIeHh0THJiT3pGYUx5QWl4!2m2!1d50.70760689211924!2d4.289669853032678!3f16.35!4f3.450000000000003!5f0.7820865974627469",
+      "https://www.google.com/maps/embed?pb=!4v1767778484598!6m8!1m7!1sEfbVA6jzxMkAAAQ7LwOTxw!2m2!1d62.04464795882912!2d129.6241284429345!3f284.16908070457873!4f-24.663824262789092!5f0.7820865974627469",
+      "https://www.google.com/maps/embed?pb=!4v1767778569079!6m8!1m7!1sjSiHYOytVDMAAAQIt04LdA!2m2!1d49.98274918243075!2d20.05448614134913!3f133.19!4f8.989999999999995!5f0.4000000000000002",
+      "https://www.google.com/maps/embed?pb=!4v1767778620699!6m8!1m7!1ss3FnKTrZWhG_xk_97KZr0A!2m2!1d69.20794114556811!2d-51.16312198207455!3f245.56!4f-13.5!5f0.4000000000000002",
+      "https://www.google.com/maps/embed?pb=!4v1767778653552!6m8!1m7!1skJPO1zlKRtMAAAQZLDcQIQ!2m2!1d68.50904688685114!2d27.48180793176623!3f327.98!4f23.72!5f0.4000000000000002",
+      "https://www.google.com/maps/embed?pb=!4v1767778888141!6m8!1m7!1sebD0tfckmx0M63FdVsQeCw!2m2!1d-36.84211890042714!2d174.764817313202!3f83.50406391649241!4f-9.395703213249533!5f0.4000000000000002",
+];
+   // --- Map Switching ---
+function changeMap(index) {
+    const iframe = document.getElementById("mapFrame");
+    if (maps[index]) {
+        iframe.src = maps[index];
+    }
+}
+
 
     // --- Confetti Function ---
     function burstConfetti(times = 1) {
