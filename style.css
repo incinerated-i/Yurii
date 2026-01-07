@@ -1,309 +1,99 @@
-/* -------------------- BODY -------------------- */
 body {
-    background-image: url("https://i.pinimg.com/1200x/95/0e/37/950e37283e193f90d8531c8a4cf79dcc.jpg");
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-
-    color: white;
-    font-family: 'Georgia', serif;
-    text-align: center;
     margin: 0;
     padding: 0;
+    font-family: 'Georgia', serif;
+    background: #0e0e11;
+    color: #fff;
+    text-align: center;
 }
 
-
-/* -------------------- TEXT -------------------- */
-h1 {
-    margin-top: 40 px;
-}
-
-p {
-    font-size: 1.2 rem;
-}
-
-
-/* -------------------- COUNTDOWN -------------------- */
-#countdown {
-    font-size: 1.5rem;
-    margin: 20 px 0;
-}
-
-
-/* -------------------- MUSIC BUTTON -------------------- */
-#musicBtn {
-    padding: 10 px 20 px;
-    border-radius: 8 px;
-    border: none;
-    background: #ff4d4d;
-    color: white;
-    cursor: pointer;
-}
-
-
-/* -------------------- SECTIONS -------------------- */
 section {
-    width: 100 %;
-    padding: 120 px 20 px;
+    padding: 60px 20px;
 }
 
-/* -------------------- CAKE SECTION -------------------- */
-#cakeSection {
-    min-height: 80 vh;
+/* Scroll spacers */
+.scrollSpacer {
+    height: 3000px;
+    width: 100%;
+}
+
+.scrollSpacer.big {
+    height: 5000px;
+}
+
+/* Appreciation box */
+#appreciationSection {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-}
-
-/* Cake Jump on Hover */
-#cakeGif {
-    width: 420 px;
-    cursor: pointer;
-    transition: transform 0.3 s ease, filter 0.3 s ease;
-}
-/* Jump effect */
-#cakeGif:hover {
-    transform: translateY (-20 px) scale (1.15);
-    filter: brightness (1.2) drop-shadow (0 0 15 px #fff);
-}
-
-.hint {
-    margin-top: 15 px;
-    opacity: 0.8;
-    font-style: italic;
-}
-
-
-/* --- MEMORIES SECTION --- */
-#memoriesSection {
-    position: relative;
-    margin-bottom: 500 px;
-}
-
-#slideshow {
-    width: 100 %;
-    max-width: 320 px;
-    height: 320 px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-}
-
-#slideshow img {
-    width: 100 %;
-    height: 100 %;
-    object-fit: cover;
-    border-radius: 12 px;
-    box-shadow: 0 0 10 px rgba (0, 0, 0, 0.5);
-    transition: opacity 1 s ease-in-out;
-}
-
-/* -------------------- SCROLL SPACER (SOLUTION 2) -------------------- */
-.scrollSpacer {
-    height: 80 vh;
-    pointer-events: none;
-    position: relative;
-}
-
-.scrollSpacer::after {
-    content: "⋯";
-    position: absolute;
-    top: 35 %;
-    left: 50 %;
-    transform: translateX (-50 %);
-    font-size: 3 rem;
-    letter-spacing: 12 px;
-    opacity: 0.25;
-    color: white;
-}
-
-/* --- MAP SECTION --- */
-#mapSection {
-    max-width: 800 px;
-    margin: 0 auto;
-    padding: 120 px 20 px;
-}
-.mapHint {
-    margin-top: 10 px;
-    font-style: italic;
-    opacity: 0.8;
-}
-
-
-/* -------------------- APPRECIATION BOX -------------------- */
-#appreciationSection {
-    width: 100 %;
-    display: flex;
-    justify-content: center;
-    padding: 100 px 20 px;
 }
 
 .appreciationBox {
-    max-width: 560 px;
-    width: 100 %;
-    background: rgba (255, 255, 255, 0.18);
-    backdrop-filter: blur (8 px);
-    color: white;
-    padding: 40 px;
-    border-radius: 18 px;
-    text-align: center;
-    font-family: 'Georgia', serif;
-    box-shadow: 0 10 px 30 px rgba (0,0,0,0.35);
+    max-width: 720px;
+    width: 100%;
+    padding: 32px 36px;
+
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    border-radius: 18px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+
     line-height: 1.7;
+    text-align: left;
 
-    /* IMPORTANT: visible by default */
     opacity: 1;
-    transform: translateY (0);
-}
-
-.appreciationBox h2 {
-    margin-bottom: 20 px;
-    font-size: 1.8 rem;
+    transform: none;
 }
 
 .appreciationBox p {
-    margin-bottom: 16 px;
-    font-size: 1.1 rem;
+    margin-bottom: 1.2em;
 }
 
-/* -------------------- MEMORY GAME -------------------- */
-#memoryGame {
-    margin: 90 px auto;
-    max-width: 600 px;
-    padding: 30 px;
-    background: rgba (0, 0, 0, 0.55);
-    border-radius: 20 px;
-}
-#memoryGame h2 {
-    margin-bottom: 10 px;
-}
-#memoryQuestion {
-    font-size: 1.2 rem;
-    margin: 20 px 0;
-}
-.choices button {
-    margin: 10 px;
-    padding: 12 px 25 px;
-    border-radius: 10 px;
-    border: none;
-    background: #ff4d4d;
-    color: white;
-    font-size: 1 rem;
-    cursor: pointer;
-}
-#memoryFeedback {
-    margin-top: 15 px;
-    font-style: italic;
-}
-
-/* -------------------- STORY GAME -------------------- */
-#storyGame {
-    border-top: 2 px dashed rgba (255,255,255,0.3);
-    margin-top: 300 px;
-    margin: 100 px auto;
-    max-width: 600 px;
-    padding: 30 px;
-    background: rgba (0, 0, 0, 0.6);
-    border-radius: 20 px;
-}
-#storyText {
-    font-size: 1.2 rem;
-    margin: 20 px 0;
-}
-
-/* -------------------- FOOTER -------------------- */
-#bottomLink {
-    padding: 80 px 20 px;
-}
-#bottomLink a {
-    color: #ff9ecb;
-    text-decoration: none;
-    font-weight: bold;
-}
-#bottomLink a:hover {
-    text-decoration: underline;
-}
-
-
-/* -------------------- POPUP -------------------- */
+/* Popup */
 #popupWindow {
-    display: none;
     position: fixed;
     inset: 0;
-    background: rgba (0,0,0,0.6);
+    background: rgba(0,0,0,0.75);
+    display: none;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 999;
 }
+
 #popupWindow.show {
     display: flex;
 }
+
 #popupContent {
-    background: white;
-    color: black;
-    padding: 30 px;
-    border-radius: 12 px;
-    width: 90 %;
-    max-width: 420 px;
-    transform: scale (0.7);
-    opacity: 0;
-    transition: transform 0.3 s ease, opacity 0.3 s ease;
-}
-#popupWindow.show #popupContent {
-    transform: scale (1);
-    opacity: 1;
-}
-.popup-buttons button {
-    margin: 5 px;
-    padding: 10 px 20 px;
-    border-radius: 8 px;
-    border: none;
-    background: #ff4d4d;
-    color: white;
-    cursor: pointer;
-}
-#surpriseBtn:disabled {
-    background: #aaa;
-    cursor: not-allowed;
-    opacity: 0.6;
-}
-.popup-buttons button.highlight {
-    animation: glow 1 s ease-in-out infinite alternate;
+    background: #111;
+    padding: 30px;
+    border-radius: 20px;
+    max-width: 500px;
+    width: 90%;
 }
 
-/* -------------------- TEXT EFFECTS -------------------- */
-#typewriter {
-    margin-top: 15 px;
-    font-style: italic;
-}
-#lockedMessage {
-    display: none;
-    margin-top: 20 px;
-    font-weight: bold;
-}
-
-/* --- VOICE PROGRESS BAR --- */
+/* Voice progress */
 #voiceProgressWrapper {
-    width: 100 %;
-    height: 8 px;
-    background: #ddd;
-    border-radius: 10 px;
+    width: 100%;
+    height: 6px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 999px;
     overflow: hidden;
-    margin-top: 15 px;
+    margin: 10px 0;
 }
 
 #voiceProgressBar {
-    width: 0 %;
-    height: 100 %;
-    background: linear-gradient (90 deg, #ff4d4d, #ff9ecb);
-    transition: width 0.15 s linear;
+    height: 100%;
+    width: 0%;
+    background: #ff9ecb;
 }
 
-#voiceTime {
-    font-size: 0.9 rem;
-    margin-top: 6 px;
-    opacity: 0.7;
+/* Buttons */
+button {
+    padding: 10px 16px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
 }
