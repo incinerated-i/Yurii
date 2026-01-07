@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const memoryFeedbackEl = document.getElementById("memoryFeedback");
     const finalGiftBtn = document.getElementById("finalGiftBtn");
     const finalGiftOverlay = document.getElementById("finalGiftOverlay");
-    
+
     const maps = [
         "https://www.google.com/maps/embed?pb=!4v1767774687928!6m8!1m7!1sqjIOYIB_OujEayuPBsUXzw!2m2!1d54.10768613335556!2d159.9851103911956!3f93.44184358199071!4f36.55819411358391!5f1.1065099421335651",
         "https://www.google.com/maps/embed?pb=!4v1767776522007!6m8!1m7!1sCAoSLEFGMVFpcE02Z2dwSFk3UzlQUkVXMHhya3dNVTB2dE83UG1xNDNJUWhiTV94!2m2!1d43.7832745612107!2d144.3124974986362!3f173.61681100620956!4f-2.2664889671150803!5f0.7820865974627469",
@@ -154,10 +154,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // NEW: secret message ONLY shows after voice ends
     voiceNote.addEventListener("ended", () => {
         lockedMessage.style.display = "block";
-        setTimeout(() => {
         surpriseBtn.disabled = false;
         surpriseBtn.classList.add("highlight");
-    }, 50);
+        surpriseBtn.style.background = "#ff9ecb"; // fix pink color
 
         if (bgMusic.paused) {
             bgMusic.play().catch(() => {});
