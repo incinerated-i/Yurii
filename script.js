@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // --- DOM Elements ---
+   // --- DOM Elements ---
     const cakeGif = document.getElementById("cakeGif");
     const popupWindow = document.getElementById("popupWindow");
     const popupContent = document.getElementById("popupContent");
@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeBtn = document.getElementById("closeBtn");
     const surpriseBtn = document.getElementById("surpriseBtn");
     const lockedMessage = document.getElementById("lockedMessage");
+    const voiceProgressBar = document.getElementById("voiceProgressBar");
+    const voiceTime = document.getElementById("voiceTime");
 
     const bgMusic = document.getElementById("bgMusic");
     const musicBtn = document.getElementById("musicBtn");
@@ -22,13 +24,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const memoryFeedbackEl = document.getElementById("memoryFeedback");
 
     // --- Confetti Function ---
-    function burstConfetti() {
-        confetti({
-            particleCount: 80,
-            spread: 70,
-            origin: { y: 0.6 },
-            colors: ['#ffffff','#ff9ecb','#ff4d4d']
-        });
+    function burstConfetti(times = 1) {
+        for (let i = 0; i < times; i++) {
+            confetti({
+                particleCount: 80,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#ffffff', '#ff9ecb', '#ff4d4d']
+            });
+        }
     }
 
     // --- Countdown Timer ---
@@ -57,7 +61,6 @@ document.addEventListener("DOMContentLoaded", () => {
             voiceNote.pause();
             playButton.textContent = "Play 💖";
         }
-
         if (bgMusic.paused) {
             bgMusic.play().catch(() => {});
             musicBtn.textContent = "⏸ Pause Music";
@@ -68,13 +71,28 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // --- Popup + Typewriter ---
-    cakeGif.addEventListener("click", () => {
-        burstConfetti();
+     cakeGif.addEventListener("click", () => {
         popupWindow.classList.add("show");
         startTyping();
-        burstConfetti(); // confetti on cake click
+        burstConfetti();
     });
 
+    closeBtn.addEventListener("click", () => {
+        popupWindow.classList.remove("show");
+
+        voiceNote.pause();
+        voiceNote.currentTime = 0;
+        playButton.textContent = "Play 💖";
+
+        voiceProgressBar.style.width = "0%";
+        voiceTime.textContent = "0:00 / 0:00";
+
+        lockedMessage.style.display = "none";
+        surpriseBtn.disabled = true;
+        surpriseBtn.classList.remove("highlight");
+    });
+
+    /* ===================== TYPEWRITER ===================== */
     function startTyping() {
         const letter =
             "I really hoped you'd see this the moment I sent it over, but now is also fine.\n" +
@@ -94,23 +112,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }, 45);
     }
-
-    closeBtn.addEventListener("click", () => {
-        popupWindow.classList.remove("show");
-        setTimeout(() => {
-            popupWindow.style.display = "none";
-        }, 300);
-
-        voiceNote.pause();
-        voiceNote.currentTime = 0;
-        playButton.textContent = "Play Voice💖";
-
-        // Lock surprise again
-        surpriseBtn.disabled = true;
-    });
-
-    // --- Voice Note ---
-    playButton.addEventListener("click", () => {
+/* ===================== VOICE NOTE ===================== */
+     playButton.addEventListener("click", () => {
         if (!bgMusic.paused) {
             bgMusic.pause();
             musicBtn.textContent = "🎵 Play Music";
@@ -125,16 +128,32 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    voiceNote.addEventListener("timeupdate", () => {
+        if (!voiceNote.duration) return;
+
+        const percent = (voiceNote.currentTime / voiceNote.duration) * 100;
+        voiceProgressBar.style.width = percent + "%";
+
+        voiceTime.textContent =
+            formatTime(voiceNote.currentTime) + " / " +
+            formatTime(voiceNote.duration);
+    });
+
     voiceNote.addEventListener("ended", () => {
         lockedMessage.style.display = "block";
 
         surpriseBtn.disabled = false;
-        surpriseBtn.textContent = "Surprise 💌";
         surpriseBtn.classList.add("highlight");
 
         bgMusic.play().catch(() => {});
         musicBtn.textContent = "⏸ Pause Music";
     });
+
+    function formatTime(sec) {
+        const m = Math.floor(sec / 60);
+        const s = Math.floor(sec % 60);
+        return `${m}:${s < 10 ? "0" : ""}${s}`;
+    }
 
     // --- Slideshow ---
     const photos = [
@@ -196,23 +215,17 @@ function loadMemoryQuestion() {
             memoryFeedbackEl.innerHTML =
                 `Score: ${memoryScore} / ${total}<br>
                  I'm surprisedd.`;
-            burstConfetti();
-            burstConfetti();
-            burstConfetti();
+            burstConfetti(3);
         } else if (ratio >= 0.5) {
             memoryQuestionEl.textContent =
                 "Bitchy Rannn.";
-
             memoryFeedbackEl.innerHTML =
                 `Score: ${memoryScore} / ${total}<br>
                  Well, if only you had followed the truths`;
-
-            burstConfetti();
-            burstConfetti();
+            burstConfetti(2);
         } else {
             memoryQuestionEl.textContent =
                 "Bitchhh, you obviously rage-baiting me atp. Tsk, this is why I HATE YOUUU >:< ";
-
             memoryFeedbackEl.innerHTML =
                 `Score: ${memoryScore} / ${total}<br>
                  Broski's an opp.`;
@@ -227,10 +240,9 @@ function loadMemoryQuestion() {
     loadMemoryQuestion();
 
     // --- Story Game ---
-    function storyChoice(choice) {
+    window.storyChoice = function (choice) {
         const storyText = document.getElementById("storyText");
         const choices = document.querySelector("#storyGame .choices");
-
         if (choice === "yeah") {
             storyText.textContent =
                 "You like it!!!!! ( ` ω ´ ) I'm so gladddd." 
@@ -242,17 +254,14 @@ function loadMemoryQuestion() {
             storyText.textContent =
                 "You don't like it? You must be lying through your teeth right now, dumbass. You should be ashamed!!!!!";
         }
-
         choices.innerHTML = "<p>💭 I wonder how long we can stay as best vros.</p>";
     }
-
     window.storyChoice = storyChoice; // expose for HTML onclick
 
     // --- Surprise Button & Hidden Gift ---
     surpriseBtn.addEventListener("click", () => {
     if (surpriseBtn.disabled) return;
-         burstConfetti();
-        burstConfetti();
+         burstConfetti(2);
         alert("I'm gonna block you now. ╰(*´︶`*)╯");
     });
 });
