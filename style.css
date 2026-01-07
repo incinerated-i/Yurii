@@ -234,8 +234,3 @@ section {
     margin-top: 20 px;
     font-weight: bold;
 }
-/* -------------------- GLOW ANIMATION -------------------- */
-@-webkit-keyframes glow {
-    0 % { box-shadow: 0 0 5 px #ff4d4d; }
-    100 % { box-shadow: 0 0 20 px #ff9ecb; }
-}
