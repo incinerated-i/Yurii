@@ -69,6 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // --- Popup + Typewriter ---
     cakeGif.addEventListener("click", () => {
+        burstConfetti();
         popupWindow.classList.add("show");
         startTyping();
         burstConfetti(); // confetti on cake click
@@ -200,12 +201,13 @@ function loadMemoryQuestion() {
             burstConfetti();
         } else if (ratio >= 0.5) {
             memoryQuestionEl.textContent =
-                "Well, if only you had followed the truths.";
+                "Bitchy Rannn.";
 
             memoryFeedbackEl.innerHTML =
                 `Score: ${memoryScore} / ${total}<br>
-                 Tsk, you are anoyyyyiiinnggg`;
+                 Well, if only you had followed the truths`;
 
+            burstConfetti();
             burstConfetti();
         } else {
             memoryQuestionEl.textContent =
@@ -231,10 +233,14 @@ function loadMemoryQuestion() {
 
         if (choice === "yeah") {
             storyText.textContent =
-                "You like it!!!!! ( ` ω ´ ) I'm so gladddd. Honestly it's because a part of me want you to feel special too (cuz u a special-needs kid). Okay, kiddin. But, you do mean the world to me...or that's what I think lmao.";
+                "You like it!!!!! ( ` ω ´ ) I'm so gladddd." 
+                "Honestly it's because a part of me want you to feel special too (cuz u a special-needs kid)." 
+                "Okay, kiddin. But, you do mean the world to me...or that's what I think lmao.";
+            burstConfetti();
+            burstConfetti();
         } else {
             storyText.textContent =
-                "You don't like it? You must be lying through your teeth right now, dumbass. You should be ashamed!!!!!!";
+                "You don't like it? You must be lying through your teeth right now, dumbass. You should be ashamed!!!!!";
         }
 
         choices.innerHTML = "<p>💭 I wonder how long we can stay as best vros.</p>";
@@ -245,9 +251,8 @@ function loadMemoryQuestion() {
     // --- Surprise Button & Hidden Gift ---
     surpriseBtn.addEventListener("click", () => {
     if (surpriseBtn.disabled) return;
-
-    alert("I'm gonna block you now. ╰(*´︶`*)╯");
+         burstConfetti();
         burstConfetti();
-        burstConfetti(); // double effect
+        alert("I'm gonna block you now. ╰(*´︶`*)╯");
     });
 });
