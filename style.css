@@ -21,34 +21,43 @@ section {
     height: 5000px;
 }
 
-/* Appreciation box */
+/* -------------------- APPRECIATION SECTION -------------------- */
 #appreciationSection {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.appreciationBox {
-    max-width: 720px;
     width: 100%;
-    padding: 32px 36px;
+    display: flex;
+    justify-content: center;
+    padding: 120px 20px; /* outer breathing space */
+    box-sizing: border-box;
+}
+.appreciationBox {
+    width: 100%;
+    max-width: 720px;   /* BIG side gaps = letter feel */
+    margin: 0 auto;
 
-    background: rgba(255, 255, 255, 0.15);
+    background-color: rgba(255, 255, 255, 0.18); /* translucent white */
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 
+    color: white;
+    padding: 48px;
     border-radius: 18px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
 
+    text-align: left;   /* letter-style reading */
     line-height: 1.7;
-    text-align: left;
+    font-family: 'Georgia', serif;
 
-    opacity: 1;
-    transform: none;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
 }
-
+/* Title inside the letter */
+#appreciationSection h2 {
+    text-align: center;
+    margin-bottom: 32px;
+    font-size: 1.9rem;
+}
+/* Paragraph spacing */
 .appreciationBox p {
-    margin-bottom: 1.2em;
+    margin-bottom: 18px;
+    font-size: 1.1rem;
 }
 
 /* Popup */
