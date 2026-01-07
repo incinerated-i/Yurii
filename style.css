@@ -97,12 +97,12 @@ button:hover {
 
 /* -------------------- SCROLL SPACERS -------------------- */
 .scrollSpacer {
-    height: 3000px;
+    height: 300px;
     width: 100%;
 }
 
 .scrollSpacer.big {
-    height: 5000px;
+    height: 500px;
 }
 
 /* -------------------- MEMORIES -------------------- */
