@@ -22,8 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const memoryQuestionEl = document.getElementById("memoryQuestion");
     const memoryFeedbackEl = document.getElementById("memoryFeedback");
-    const finalGiftBtn = document.getElementById("finalGiftBtn");
-    const finalGiftOverlay = document.getElementById("finalGiftOverlay");
 
     const maps = [
         "https://www.google.com/maps/embed?pb=!4v1767774687928!6m8!1m7!1sqjIOYIB_OujEayuPBsUXzw!2m2!1d54.10768613335556!2d159.9851103911956!3f93.44184358199071!4f36.55819411358391!5f1.1065099421335651",
@@ -154,9 +152,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // NEW: secret message ONLY shows after voice ends
     voiceNote.addEventListener("ended", () => {
         lockedMessage.style.display = "block";
+        setTimeout(() => {
         surpriseBtn.disabled = false;
         surpriseBtn.classList.add("highlight");
-        surpriseBtn.style.background = "#ff9ecb"; // fix pink color
+    }, 50);
 
         if (bgMusic.paused) {
             bgMusic.play().catch(() => {});
@@ -266,14 +265,4 @@ document.addEventListener("DOMContentLoaded", () => {
         burstConfetti(2);
         alert("I'm gonna block you now. ╰(*´︶`*)╯");
     });
-});
-
-
-finalGiftBtn.addEventListener("click", () => {
-    finalGiftOverlay.classList.add("show");
-    burstConfetti(5);
-
-// Optional: click anywhere to close gift overlay
-finalGiftOverlay.addEventListener("click", () => {
-    finalGiftOverlay.classList.remove("show");
 });
