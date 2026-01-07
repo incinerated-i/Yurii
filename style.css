@@ -2,9 +2,13 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Georgia', serif;
-    background: #0e0e11;
-    color: #fff;
+    color: white;
     text-align: center;
+
+    background-image: url("https://i.pinimg.com/1200x/95/0e/37/950e37283e193f90d8531c8a4cf79dcc.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 section {
