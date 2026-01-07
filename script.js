@@ -181,7 +181,11 @@ document.addEventListener("DOMContentLoaded", () => {
         "assets/images/photo3.png",
         "assets/images/photo4.png",
         "assets/images/photo5.png",
-        "assets/images/photo6.png"
+        "assets/images/photo6.png",
+        "assets/images/photo7.png",
+        "assets/images/photo8.png",
+        "assets/images/photo9.png",
+        "assets/images/photo10.png",
     ];
 
     let slideIndex = 0;
