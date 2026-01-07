@@ -278,6 +278,6 @@ document.addEventListener("DOMContentLoaded", () => {
     finalGifLink.addEventListener("click", (e) => {
         e.preventDefault(); // prevent page jump
         burstConfetti(3);
-        alert("Here's your GIF surprise! 🎁");
+        alert("BE HAPPY FOR THE REST OF THE DAY OKAYYY (oh and ill send you some robux too ig...) 🎁");
     });
 });
