@@ -140,6 +140,7 @@ section {
     justify-content: center;
     padding: 100 px 20 px; /* space around section */
 }
+
 .appreciationBox {
     max-width: 550 px;      /* limits horizontal width so text doesn't sprawl */
     width: 100 %;
@@ -154,21 +155,25 @@ section {
     line-height: 1.6;
 
     opacity: 0;             /* initial invisible for animation */
-    transform: translateY (40 px); /* start slightly down */
+    transform: translate Y (40 px); /* start slightly down */
     transition: opacity 1 s ease, transform 1 s ease;
 }
+
 .appreciationBox.visible {
     opacity: 1;
-    transform: translateY (0);
+    transform: translate Y (0);
 }
+
 .appreciationBox h2 {
     margin-bottom: 20 px;
     font-size: 1.8 rem;
 }
+
 .appreciationBox p {
     margin-bottom: 15 px;
     font-size: 1.1 rem;
 }
+
 
 /* -------------------- MEMORY GAME -------------------- */
 #memoryGame {
