@@ -22,7 +22,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const memoryQuestionEl = document.getElementById("memoryQuestion");
     const memoryFeedbackEl = document.getElementById("memoryFeedback");
-    const finalGifLink = document.getElementById("finalGifLink");
+
+    const finalGifLink = document.getElementById("finalGifLink"); // NEW
 
     const maps = [
         "https://www.google.com/maps/embed?pb=!4v1767774687928!6m8!1m7!1sqjIOYIB_OujEayuPBsUXzw!2m2!1d54.10768613335556!2d159.9851103911956!3f93.44184358199071!4f36.55819411358391!5f1.1065099421335651",
@@ -52,6 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    // --- COUNTDOWN ---
     const birthday = new Date("January 8, 2026 00:00:00").getTime();
     const countdownTimer = setInterval(() => {
         const diff = birthday - Date.now();
@@ -68,6 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
         countdownEl.textContent = `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s`;
     }, 1000);
 
+    // --- MUSIC ---
     musicBtn.addEventListener("click", () => {
         if (!voiceNote.paused) {
             voiceNote.pause();
@@ -84,13 +87,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let popupOpened = false;
 
+    // --- POPUP ---
     cakeGif.addEventListener("click", () => {
         burstConfetti();
         if (!popupOpened) {
             popupOpened = true;
             popupWindow.classList.add("show");
 
-            // HIDE secret message at start
+            // Hide secret message at start
             lockedMessage.style.display = "none";
             surpriseBtn.disabled = true;
             surpriseBtn.classList.remove("highlight");
@@ -127,6 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 45);
     }
 
+    // --- VOICE NOTE ---
     playButton.addEventListener("click", () => {
         if (!bgMusic.paused) {
             bgMusic.pause();
@@ -150,14 +155,13 @@ document.addEventListener("DOMContentLoaded", () => {
             formatTime(voiceNote.duration);
     });
 
-    // NEW: secret message ONLY shows after voice ends
+    // Secret message ONLY shows after voice ends
     voiceNote.addEventListener("ended", () => {
         lockedMessage.style.display = "block";
-        setTimeout(() => {
         surpriseBtn.disabled = false;
-        surpriseBtn.classList.add("highlight");   // existing
-        surpriseBtn.style.background = "#ff9ecb";  
-
+        // Ensure the button goes back to pink
+        surpriseBtn.style.backgroundColor = "#ff9ecb"; 
+        surpriseBtn.classList.add("highlight");
         if (bgMusic.paused) {
             bgMusic.play().catch(() => {});
             musicBtn.textContent = "⏸ Pause Music";
@@ -170,6 +174,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return `${m}:${s < 10 ? "0" : ""}${s}`;
     }
 
+    // --- SLIDESHOW ---
     const photos = [
         "assets/images/photo1.png",
         "assets/images/photo2.png",
@@ -189,6 +194,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 500);
     }, 3000);
 
+    // --- MEMORY GAME ---
     const memoryQuestions = [
         { q: "Who is the smarter one?", correct: 0, response: "Duh obviously its me 🙄" },
         { q: "Who always rage-bait the other?", correct: 1, response: "And I hate you for that.(not)" },
@@ -243,6 +249,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.answerMemory = answerMemory;
     loadMemoryQuestion();
 
+    // --- STORY GAME ---
     window.storyChoice = function (choice) {
         const storyText = document.getElementById("storyText");
         const choices = document.querySelector("#storyGame .choices");
@@ -259,11 +266,18 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         choices.innerHTML = "<p>💭 I wonder how long we can stay as best vros.</p>";
     };
-    window.storyChoice = storyChoice;
 
+    // --- SURPRISE BUTTON ---
     surpriseBtn.addEventListener("click", () => {
         if (surpriseBtn.disabled) return;
         burstConfetti(2);
         alert("I'm gonna block you now. ╰(*´︶`*)╯");
+    });
+
+    // --- FINAL GIF ---
+    finalGifLink.addEventListener("click", (e) => {
+        e.preventDefault(); // prevent page jump
+        burstConfetti(3);
+        alert("Here's your GIF surprise! 🎁");
     });
 });
