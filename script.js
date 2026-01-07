@@ -94,6 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!popupOpened) {
             popupOpened = true;
             popupWindow.classList.add("show");
+            lockedMessage.style.display = "none"; // hide secret message at popup start
             startTyping();
         }
     });
@@ -148,19 +149,19 @@ document.addEventListener("DOMContentLoaded", () => {
             formatTime(voiceNote.duration);
     });
 
-    // --- FIXED: lockedMessage only shows after audio truly ends ---
-    voiceNote.addEventListener("ended", () => {
-        // Safety check to ensure it’s really finished
-        if (voiceNote.currentTime >= voiceNote.duration - 0.05) {
-            lockedMessage.style.display = "block";
-            surpriseBtn.disabled = false;
-            surpriseBtn.classList.add("highlight");
-            if (bgMusic.paused) {
-                bgMusic.play().catch(() => {});
-                musicBtn.textContent = "⏸ Pause Music";
-            }
+voiceNote.addEventListener("ended", () => {
+    if (voiceNote.currentTime >= voiceNote.duration - 0.05) {
+        lockedMessage.style.display = "block";
+        surpriseBtn.disabled = false;
+        surpriseBtn.classList.add("highlight");
+
+        // auto-play background music after voice ends
+        if (bgMusic.paused) {
+            bgMusic.play().catch(() => {});
+            musicBtn.textContent = "⏸ Pause Music";
         }
-    });
+    }
+});
 
     function formatTime(sec) {
         const m = Math.floor(sec / 60);
