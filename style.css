@@ -133,35 +133,43 @@ section {
 }
 
 
-/* -------------------- APPRECIATION SECTION -------------------- */
+/* -------------------- APPRECIATION BOX -------------------- */
 #appreciationSection {
-    padding: 100 px 20 px;
+    width: 100 %;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: rgba (0, 0, 0, 0.4); /* optional semi-transparent background for contrast */
-}
-#appreciationSection h2 {
-    font-family: 'Georgia', serif; /* You can change this to any font you want */
-    font-size: 2 rem;
-    margin-bottom: 30 px;
-    color: #ff9ecb;
+    justify-content: center;
+    padding: 100 px 20 px; /* space around section */
 }
 .appreciationBox {
-    background: rgba (255, 77, 77, 0.1); /* light pink translucent box */
-    border: 2 px solid #ff9ecb;
-    border-radius: 16 px;
-    padding: 40 px;
-    max-height: 400 px;
-    overflow-y: auto;
-    max-width: 700 px;
-    width: 90 %;
-    font-family: 'Courier New', monospace; /* Change to any font you like */
-    font-size: 1.2 rem;
-    line-height: 1.6;
+    max-width: 550 px;      /* limits horizontal width so text doesn't sprawl */
+    width: 100 %;
+    background: rgba (255, 255, 255, 0.15); /* translucent white */
+    backdrop-filter: blur (8 px);           /* frosted glass effect */
     color: white;
-    text-align: left;
-    box-shadow: 0 8 px 20 px rgba (0,0,0,0.4);
+    padding: 40 px;
+    border-radius: 16 px;
+    text-align: center;
+    font-family: 'Georgia', serif; /* change to any font you like */
+    box-shadow: 0 0 20 px rgba (0,0,0,0.3);
+    line-height: 1.6;
+
+    opacity: 0;             /* initial invisible for animation */
+    transform: translateY (40 px); /* start slightly down */
+    transition: opacity 1 s ease, transform 1 s ease;
+}
+.appreciationBox.visible {
+    opacity: 1;
+    transform: translateY (0);
+}
+.appreciationBox h2 {
+    margin-bottom: 20 px;
+    font-size: 1.8 rem;
+}
+.appreciationBox p {
+    margin-bottom: 15 px;
+    font-size: 1.1 rem;
+}
+
 }
 /* -------------------- MEMORY GAME -------------------- */
 #memoryGame {
