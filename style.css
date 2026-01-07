@@ -61,9 +61,7 @@ section {
     width: 420 px;
     cursor: pointer;
     transition: transform 0.3 s ease, filter 0.3 s ease;
-    position: relative;
 }
-
 /* Jump effect */
 #cakeGif:hover {
     transform: translateY (-20 px) scale (1.15);
@@ -80,32 +78,90 @@ section {
 /* --- MEMORIES SECTION --- */
 #memoriesSection {
     position: relative;
-}
-
-#memoriesSection::after {
-    content: "";
-    display: block;
-    height: 200 px; /* visual buffer */
+    margin-bottom: 500 px; /* SOLUTION 1 */
 }
 
 #slideshow {
     width: 100 %;
     max-width: 320 px;
-    height: 320 px;          /* 🔒 FIXED HEIGHT */
+    height: 320 px;
     margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;       /* hides overflow from tall images */
+    overflow: hidden;
 }
 
 #slideshow img {
     width: 100 %;
     height: 100 %;
-    object-fit: cover;      /* 🔑 maintains layout regardless of ratio */
+    object-fit: cover;
     border-radius: 12 px;
-    box-shadow: 0 0 10 px rgba (0,0,0,0.5);
+    box-shadow: 0 0 10 px rgba (0, 0, 0, 0.5);
     transition: opacity 1 s ease-in-out;
+}
+
+/* -------------------- SCROLL SPACER (SOLUTION 2) -------------------- */
+.scrollSpacer {
+    height: 80 vh;
+    pointer-events: none;
+    position: relative;
+}
+
+.scrollSpacer::after {
+    content: "⋯";
+    position: absolute;
+    top: 35 %;
+    left: 50 %;
+    transform: translateX (-50 %);
+    font-size: 3 rem;
+    letter-spacing: 12 px;
+    opacity: 0.25;
+    color: white;
+}
+/* -------------------- MEMORY GAME -------------------- */
+#memoryGame {
+    margin: 90 px auto;
+    max-width: 600 px;
+    padding: 30 px;
+    background: rgba (0, 0, 0, 0.55);
+    border-radius: 20 px;
+}
+#memoryGame h2 {
+    margin-bottom: 10 px;
+}
+#memoryQuestion {
+    font-size: 1.2 rem;
+    margin: 20 px 0;
+}
+.choices button {
+    margin: 10 px;
+    padding: 12 px 25 px;
+    border-radius: 10 px;
+    border: none;
+    background: #ff4d4d;
+    color: white;
+    font-size: 1 rem;
+    cursor: pointer;
+}
+#memoryFeedback {
+    margin-top: 15 px;
+    font-style: italic;
+}
+
+/* -------------------- STORY GAME -------------------- */
+#storyGame {
+    border-top: 2 px dashed rgba (255,255,255,0.3);
+    margin-top: 300 px;
+    margin: 100 px auto;
+    max-width: 600 px;
+    padding: 30 px;
+    background: rgba (0, 0, 0, 0.6);
+    border-radius: 20 px;
+}
+#storyText {
+    font-size: 1.2 rem;
+    margin: 20 px 0;
 }
 
 /* -------------------- FOOTER -------------------- */
@@ -168,53 +224,6 @@ section {
     animation: glow 1 s ease-in-out infinite alternate;
 }
 
-/* -------------------- MEMORY GAME -------------------- */
-#memoryGame {
-    margin: 90 px auto;
-    max-width: 600 px;
-    padding: 30 px;
-    background: rgba (0, 0, 0, 0.55);
-    border-radius: 20 px;
-}
-#memoryGame h2 {
-    margin-bottom: 10 px;
-}
-#memoryQuestion {
-    font-size: 1.2 rem;
-    margin: 20 px 0;
-}
-.choices button {
-    margin: 10 px;
-    padding: 12 px 25 px;
-    border-radius: 10 px;
-    border: none;
-    background: #ff4d4d;
-    color: white;
-    font-size: 1 rem;
-    cursor: pointer;
-}
-
-#memoryFeedback {
-    margin-top: 15 px;
-    font-style: italic;
-}
-
-
-/* -------------------- STORY GAME -------------------- */
-#storyGame {
-    border-top: 2 px dashed rgba (255,255,255,0.3);
-    margin-top: 300 px;
-    margin: 100 px auto;
-    max-width: 600 px;
-    padding: 30 px;
-    background: rgba (0, 0, 0, 0.6);
-    border-radius: 20 px;
-}
-#storyText {
-    font-size: 1.2 rem;
-    margin: 20 px 0;
-}
-
 /* -------------------- TEXT EFFECTS -------------------- */
 #typewriter {
     margin-top: 15 px;
@@ -224,4 +233,9 @@ section {
     display: none;
     margin-top: 20 px;
     font-weight: bold;
+}
+/* -------------------- GLOW ANIMATION -------------------- */
+@-webkit-keyframes glow {
+    0 % { box-shadow: 0 0 5 px #ff4d4d; }
+    100 % { box-shadow: 0 0 20 px #ff9ecb; }
 }
